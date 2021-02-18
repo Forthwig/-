@@ -41,11 +41,13 @@ button {
 }
 
 .logo {
-    font-size: 1.1rem;
+    font-size: 2.1rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
     line-height: 4rem;
+    position: relative;
+    right: 10%;
 }
 
 .logo span {
@@ -102,7 +104,7 @@ button {
 header {
     min-height: 100vh;
     width: 100%;
-    background: url("../resources/laptop-1209008_1280.jpg") no-repeat top center / cover;
+    background: url(https://burst.shopifycdn.com/photos/clean-workstation-with-coffee.jpg?width=4460&height=4460&exif=1&iptc=1) no-repeat top center / cover;
     position: relative;
 }
 
@@ -203,6 +205,20 @@ ul {
 
 .links a:hover {
     color: #fff;
+}
+
+.myLink::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: width .3s;
+}
+
+.myLink:hover::after{
+    width: 100%;
+    transition: width .3s;
 }
 
 .container.active .links a {

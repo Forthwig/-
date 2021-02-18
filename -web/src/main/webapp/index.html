@@ -1,0 +1,237 @@
+<!doctype html>
+<html ng-app="bibliotech">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        body {
+            padding-top: 5rem;
+        }
+
+        .card-img-top {
+            height: 250px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        #search input {
+            border-radius: 20px;
+        }
+
+        .splashscreen.ng-cloak {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .splashscreen {
+            transition: all 1s ease-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2000;
+            background-color: white;
+            visibility: hidden;
+            opacity: 0;
+            text-align: center;
+        }
+
+        .splashscreen small {
+            font-size: 50%;
+        }
+
+
+        fieldset, label {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            margin: 10px;
+        }
+
+
+        .rating {
+            border: none;
+            /*float: left;*/
+            width:32%;
+        }
+
+        .rating > input {
+            display: none;
+        }
+
+        .rating > label:before {
+            margin: 5px;
+            font-size: 1.25em;
+            font-family: FontAwesome;
+            display: inline-block;
+            content: "\f005";
+        }
+
+        .rating > .half:before {
+            content: "\f089";
+            position: absolute;
+        }
+
+        .rating > label {
+            color: #ddd;
+            float: right;
+        }
+
+
+        .rating > input:checked ~ label, /* show gold star when clicked */
+        .rating:not(:checked) > label:hover, /* hover current star */
+        .rating:not(:checked) > label:hover ~ label {
+            color: #FFD700;
+        }
+
+        /* hover previous stars in list */
+
+        .rating > input:checked + label:hover, /* hover current star when changing rating */
+        .rating > input:checked ~ label:hover,
+        .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+        .rating > input:checked ~ label:hover ~ label {
+            color: #FFED85;
+        }
+    </style>
+</head>
+<body>
+<div class="splashscreen d-flex align-items-center justify-content-center ng-cloak">
+    <h1>BiblioTech<br/>
+        <small class="text-secondary">loading...</small>
+    </h1>
+</div>
+<div class="fluid-container" ng-controller="BooksController as ctrl">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+            <a class="navbar-brand" href="#">BiblioTech</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </header>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{ctrl.selected.title}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body ">
+                    <div class="d-flex d-flex justify-content-center">
+                        <div class="card text-center " style="width: 20rem; margin-bottom:20px">
+                            <img class="card-img-top" ng-src="{{ctrl.selected.image}}" alt="{{ctrl.selected.title}}">
+                            <div class="card-body">
+                                <p class="card-text text-secondary"><span class="badge badge-secondary">{{ctrl.selected.language}}</span> - {{ctrl.selected.author}}</p>
+                                <div class="tags">
+                                    <span ng-repeat="tag in ctrl.selected.tags|orderBy:'toString()'"><span class="badge badge-info tag">{{tag}}</span> </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="text-left">
+                        <p> Review </p>
+                        <fieldset class="rating">
+                            <input type="radio" id="star5" name="rating" value="5"/><label class="full" for="star5" ng-click="ctrl.addReview(5)" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="star4" name="rating" value="4"/><label class="full" for="star4" ng-click="ctrl.addReview(4)" title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="star3" name="rating" value="3"/><label class="full" for="star3" ng-click="ctrl.addReview(3)" title="Meh - 3 stars"></label>
+                            <input type="radio" id="star2" name="rating" value="2"/><label class="full" for="star2" ng-click="ctrl.addReview(2)" title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="star1" name="rating" value="1"/><label class="full" for="star1" ng-click="ctrl.addReview(1)" title="Sucks big time - 1 star"></label>
+                        </fieldset>
+                    </div>
+                    <ul class="list-group clearfix">
+                        <li ng-repeat="review in ctrl.selected.reviews | orderBy:'-dateOfReview' " class="list-group-item">
+                            <span class="badge badge-success">{{review.score}}</span><small class="text-muted">   {{review.dateOfReview | date:'yyyy-MM-dd HH:mm:ss'}}</small>
+                            <button type="button" class="close" ng-click="ctrl.deleteReview(review.id)">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <ul class="list-group">
+        <li ng-repeat="(id,title) in ctrl.books " class="list-group-item">
+            {{title}}
+            <a class="btn btn-primary float-right" href="#" role="button" data-toggle="modal" data-target="#exampleModal" ng-click="ctrl.loadModal(id)">getDetails</a>
+        </li>
+    </ul>
+
+
+</div>
+
+<script>
+    angular.module("bibliotech", []).controller("BooksController", function ($http) {
+        var that = this;
+        $http({
+            method: 'GET',
+            url: 'http://localhost:8080/lab06/api/books/'
+        }).then(function successCallback(response) {
+            that.books = response.data;
+        });
+
+        var refreshSelected = function (bookId) {
+            this.selected = {};
+            $http({
+                method: 'GET',
+                url: 'http://localhost:8080/lab06/api/books/' + bookId
+            }).then(function successCallback(response) {
+                that.selected = response.data;
+                that.selected.author = that.selected.authors.join(", ");
+            });
+
+        };
+        this.loadModal = function (bookId) {
+            refreshSelected(bookId);
+        }
+
+        this.addReview = function (score) {
+            var review = {"score": score, "book": {"id": this.selected.id}, "dateOfReview": new Date()};
+            $http({
+                method: 'POST',
+                url: 'http://localhost:8080/lab06/api/reviews',
+                data: review
+            }).then(function successCallback(response) {
+                refreshSelected(that.selected.id);
+            });
+        }
+
+        this.deleteReview = function (reviewId) {
+            $http({
+                method: 'DELETE',
+                url: 'http://localhost:8080/lab06/api/reviews/' + reviewId,
+            }).then(function successCallback(response) {
+                refreshSelected(that.selected.id);
+            });
+        }
+    });
+</script>
+</body>
+</html>

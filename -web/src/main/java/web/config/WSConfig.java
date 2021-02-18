@@ -1,7 +1,6 @@
 package web.config;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
-import junia.lab06.web.controller.RestController;
 import org.apache.cxf.Bus;
 import org.apache.cxf.endpoint.Server;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
@@ -9,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
+import web.controller.RestController;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Професор</title>
+    <link rel="stylesheet" href="csstyle.css" />
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="menu">
+            <h3 class="logo">Професор</h3>
+            <div class="hamburger-menu">
+                <div class="bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="main">
+            <header>
+                <div class="overlay">
+                    <div class="inner">
+                        <h2 class="title">Note tes profs !</h2>
+                        <p>
+                            La première plateforme ISEN permettant de noter les différents profs et intervenants.
+                        </p>
+                        <button class="btn">Se connecter</button>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <div class="shadow one"></div>
+        <div class="shadow two"></div>
+    </div>
+
+    <div class="links">
+        <ul>
+            <li>
+                <a href="#" style="--i: 0.05s;" class="myLink">Index</a>
+            </li>
+            <li>
+                <a href="/login" style="--i: 0.1s;" class="myLink">Se connecter</a>
+            </li>
+            <li>
+                <a href="#" style="--i: 0.15s;" class="myLink">Ecrire</a>
+            </li>
+            <li>
+                <a href="#" style="--i: 0.2s;" class="myLink">Classement</a>
+            </li>
+            <li>
+                <a href="#" style="--i: 0.25s;" class="myLink">Mon profil</a>
+            </li>
+            <li>
+                <a href="#" style="--i: 0.3s;" class="myLink">Contact</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script src="jscript.js"></script>
+</body>
+</html>

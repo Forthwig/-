@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3D Navbar Animation</title>
+    <title>Професор</title>
     <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
@@ -24,7 +24,7 @@
                     <div class="inner">
                         <h2 class="title">Note tes profs !</h2>
                         <p>
-                            La première plateform ISEN permettant de noter les différents profs et intervenants.
+                            La première plateforme ISEN permettant de noter les différents profs et intervenants.
                         </p>
                         <button class="btn">Se connecter</button>
                     </div>
@@ -42,10 +42,10 @@
                 <a href="#" style="--i: 0.05s;" class="myLink">Index</a>
             </li>
             <li>
-                <a href="#" style="--i: 0.1s;" class="myLink">Se connecter</a>
+                <a href="/login" style="--i: 0.1s;" class="myLink">Se connecter</a>
             </li>
             <li>
-                <a href="#" style="--i: 0.15s;" class="myLink">Publier</a>
+                <a href="#" style="--i: 0.15s;" class="myLink">Ecrire</a>
             </li>
             <li>
                 <a href="#" style="--i: 0.2s;" class="myLink">Classement</a>

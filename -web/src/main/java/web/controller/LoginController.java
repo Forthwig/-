@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class LoginController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(@RequestParam(value = "error", required = false) String error,
                             @RequestParam(value = "logout", required = false) String logout,
                             ModelMap modelMap) {
@@ -24,7 +24,7 @@ public class LoginController {
             errorMessge = "You have been successfully logged out !!";
         modelMap.addAttribute("errorMessge", errorMessge);
         //modelMap.put("ingenieur",new Ingenieur());
-        return "index";
+        return "login";
     }
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)

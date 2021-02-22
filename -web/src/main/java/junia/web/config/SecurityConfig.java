@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
         // Users in memory.
-        authManagerBuilder.inMemoryAuthentication().withUser("user1").password("12345").roles("USER");
+        authManagerBuilder.inMemoryAuthentication().withUser("1@1.fr").password("111").roles("STUDENT");
 
         // For User in database.
         authManagerBuilder.jdbcAuthentication().dataSource(dataSource)
@@ -47,12 +47,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
             .formLogin()
             .loginPage("/login")
-                .defaultSuccessUrl("/")
-                .failureUrl("/?error=true")
+                .defaultSuccessUrl("/profil")
+                .failureUrl("/login?error=true")
                 .permitAll()
         .and()
             .logout()
-            .logoutSuccessUrl("/?logout=true")
+            .logoutSuccessUrl("/login?logout=true")
             .invalidateHttpSession(true)
             .permitAll()
         .and()

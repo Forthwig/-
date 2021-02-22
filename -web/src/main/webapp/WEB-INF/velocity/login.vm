@@ -567,7 +567,7 @@
                                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                             </div>
                             <span>Ou avec ton compte</span>
-                            <input type="email" placeholder="Email" name='username' />
+                            <input type="email" placeholder="Email" name='username' value='' />
                             <input type="password" placeholder="Password" name='password' />
                             <a href="#">Mot de passe oublié ? </a>
                             <button>Se connecter</button>

@@ -27,8 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // For User in database.
         authManagerBuilder.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("SELECT login,password,enable FROM Teacher,Student WHERE login=?")
-                .authoritiesByUsernameQuery("SELECT login,role FROM Teacher,Student WHERE login=?");
+                    .usersByUsernameQuery("SELECT mail,password,enable FROM student WHERE mail=?")
+                .authoritiesByUsernameQuery("SELECT mail,role FROM student WHERE mail=?");
     }
 
     @Bean
@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/list","/form","/list/**","/logout").hasAnyRole("USER")
+                .antMatchers("/list","/form","/list/**","/logout").hasAnyRole("STUDENT")
         .and()
             .formLogin()
             .loginPage("/login")

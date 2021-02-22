@@ -559,16 +559,17 @@
                         </form>
                     </div>
                     <div class="form-container sign-in-container">
-                        <form action="#">
+                        <form action="" method="POST">
                             <h1>Se connecter</h1>
+                            <h5>$errorMessge</h5>
                             <div class="social-container">
                                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                                 <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                             </div>
                             <span>Ou avec ton compte</span>
-                            <input type="email" placeholder="Email" />
-                            <input type="password" placeholder="Password" />
+                            <input type="email" placeholder="Email" name='username' />
+                            <input type="password" placeholder="Password" name='password' />
                             <a href="#">Mot de passe oublié ? </a>
                             <button>Se connecter</button>
                         </form>
@@ -622,8 +623,26 @@
 <script>
     function myFunction() {
         $('.container').css('background-color', '#485461');
-        console.log("nico suce des bites");
     }
+    const hamburger_menu = document.querySelector(".hamburger-menu");
+const container = document.querySelector(".container");
+
+hamburger_menu.addEventListener("click", () => {
+    container.classList.toggle("active");
+});
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const containere = document.getElementById('containere');
+var menuCSSChange = document.getElementById('changecss');
+
+signUpButton.addEventListener('click', () => {
+    containere.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+    containere.classList.remove("right-panel-active");
+});
+
 </script>
 
 

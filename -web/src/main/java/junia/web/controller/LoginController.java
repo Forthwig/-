@@ -23,7 +23,6 @@ public class LoginController implements RestController {
         if(logout != null)
             errorMessge = "You have been successfully logged out !!";
         modelMap.addAttribute("errorMessge", errorMessge);
-        //modelMap.put("ingenieur",new Ingenieur());
         return "login";
     }
 

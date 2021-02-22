@@ -328,8 +328,6 @@
 </style>
 
 
-
-
 <body>
 <div class="container">
     <div class="navbar">
@@ -350,7 +348,9 @@
                         <p>
                             La première plateforme ISEN permettant de noter les différents profs et intervenants.
                         </p>
-                        <button class="btn">Se connecter</button>
+                        <a href="login" style="--i: 0.05s;" class="myLink">
+                            <button class="btn">Se connecter</button>
+                        </a>
                     </div>
                 </div>
             </header>
@@ -366,7 +366,7 @@
                 <a href="#" style="--i: 0.05s;" class="myLink">Index</a>
             </li>
             <li>
-                <a href="/login" style="--i: 0.1s;" class="myLink">Se connecter</a>
+                <a href="login" style="--i: 0.1s;" class="myLink">Se connecter</a>
             </li>
             <li>
                 <a href="#" style="--i: 0.15s;" class="myLink">Ecrire</a>

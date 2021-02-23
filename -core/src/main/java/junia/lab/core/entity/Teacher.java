@@ -1,47 +1,21 @@
 package junia.lab.core.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class Teacher {
+public class Teacher extends GenericEntity implements Comparable<Teacher> {
 
-    private Long id;
-    private String firstName;
-    private String secondName;
-    private String Login;
-    private String password;
     private String email;
-    private String role;
 
-    public Teacher() {
-    }
+    private String password;
 
-    public String getFirstName() {
-        return firstName;
-    }
+    private String role; //TODO Alaways Teacher
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+    private String enable; //TODO Alaways 1
 
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public String getLogin() {
-        return Login;
-    }
-
-    public void setLogin(String login) {
-        Login = login;
-    }
+    @ManyToMany(mappedBy = "Teacher")
+    private List<Lesson> Lessons;
 
     public String getPassword() {
         return password;
@@ -59,17 +33,8 @@ public class Teacher {
         this.email = email;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public int compareTo(Teacher o) {
+        return Long.compare(o.getId(),getId());
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long getId() {
-        return id;
-    }
-
-
-
-
 }

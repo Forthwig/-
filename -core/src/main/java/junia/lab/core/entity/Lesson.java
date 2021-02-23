@@ -4,12 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Lesson implements Comparable<Lesson>  {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
+public class Lesson extends GenericEntity implements Comparable<Lesson>  {
 
     private String title;
 
@@ -17,27 +12,20 @@ public class Lesson implements Comparable<Lesson>  {
     private Language language;
 
     @ManyToMany
-    @JoinTable(
-            name = "book_author",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Teacher> authors;
+    @JoinTable(name = "Lesson_tag_teacher", joinColumns = @JoinColumn(name = "lesson_id"), inverseJoinColumns = @JoinColumn(name = "teacher_id"))
+    private Set<Teacher> Teachers;
+
+    @ManyToMany
+    @JoinTable(name = "Lesson_tag_student", joinColumns = @JoinColumn(name = "lesson_id"), inverseJoinColumns = @JoinColumn(name = "Student_id"))
+    private Set<Teacher> Students;
 
     private String image;
 
     @ManyToMany
-    @JoinTable(
-            name = "book_tag",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    private Set<Tag> tags;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="lesson")
+    private Set<Review> reviews;
 
     public String getTitle() {
         return title;
@@ -55,16 +43,8 @@ public class Lesson implements Comparable<Lesson>  {
         this.language = language;
     }
 
-    public String getImage() {
-        return image;
+    @Override public int compareTo(final Lesson o) {
+        return title.compareTo(o.title);
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    @Override
-    public int compareTo(Lesson o) {
-        return 0;
-    }
 }

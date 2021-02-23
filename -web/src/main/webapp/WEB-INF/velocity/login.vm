@@ -99,11 +99,6 @@
         </ul>
     </div>
 </div>
-<script>
-    function myFunction() {
-        $('.container').css('background-color', '#485461');
-    }
-</script>
 
 <script src="resources/js/script.js"></script>
 <script src="resources/js/log.js"></script>

@@ -6,51 +6,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Student {
+public class Student extends GenericEntity implements Comparable<Student> {
 
-    private Long id;
-    private String firstName;
-    private String secondName;
-    private String Login;
-    private String password;
     private String email;
-    private String role;
 
-    public Student() {
-    }
+    private String password;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long getId() {
-        return id;
-    }
+    private String role; //TODO Alaways Student
+
+    private String enable; //TODO Alaways 1
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public String getLogin() {
-        return Login;
-    }
-
-    public void setLogin(String login) {
-        Login = login;
     }
 
     public String getPassword() {
@@ -67,5 +34,10 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return Long.compare(o.getId(),getId());
     }
 }

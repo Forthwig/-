@@ -6,6 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import junia.web.dto.TeacherDTO;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -22,44 +25,46 @@ public class TeacherController implements RestController {
 
     private static final Logger logger =  LoggerFactory.getLogger(TeacherService.class);
 
-    /**
-     *if use velocity
-    @RequestMapping(path = "/list", method = RequestMethod.GET)
-    public String getListOfCompanies(ModelMap modelMap){
-        modelMap.put("teachers",this.teacherService.findAll());
-        return  "TeacherList";
-    }
-    **/
     public TeacherController(TeacherService reviewService) {
         this.teacherService = reviewService;
     }
 
+    /** WEB **/
+
+    @RequestMapping(path = "/teachers", method = RequestMethod.GET)
+    public String getListOfCompanies(ModelMap modelMap){
+        modelMap.put("teachers",this.teacherService.findAll());
+        return  "TeacherList";
+    }
+
+    /** API **/
+
     @POST
-    @Path("")
+    @Path("/teachers/add")
     public void saveReview(Teacher review){
         teacherService.save(review);
     }
 
     @DELETE
-    @Path("/{reviewId}")
-    public void deleteReviewById(@PathParam("reviewId") long reviewId){
+    @Path("/teachers/remove/{teacherId}")
+    public void deleteReviewById(@PathParam("teacherId") long reviewId){
         teacherService.deleteTeacherById(reviewId);
     }
 
     @GET
-    @Path("")
+    @Path("/teachers")
     public Map<Long,String> listTeacher(){
-        return teacherService.findAll().stream().collect(Collectors.toMap(Teacher::getId, Teacher::getFirstName));
+        return teacherService.findAll().stream().collect(Collectors.toMap(Teacher::getId, Teacher::getEmail));
     }
 
     @GET
-    @Path("/{teacherId}")
+    @Path("/teachers/{teacherId}")
     public TeacherDTO getTeacherById(@PathParam("teacherId") long teacherId){
         Teacher teacher = teacherService.getById(teacherId);
         TeacherDTO result = new TeacherDTO();
         result.setId(teacher.getId());
-        result.setFirstName(teacher.getFirstName());
-        //...
+        result.setEmail(teacher.getEmail());
+        result.setPassword(teacher.getPassword());
         return result;
 
     }

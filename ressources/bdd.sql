@@ -137,35 +137,58 @@ CREATE TABLE `review` (
 LOCK TABLES `review` WRITE;
 /*!40000 ALTER TABLE `review` DISABLE KEYS */;
 INSERT INTO `review` VALUES (245,'2019-10-06 18:38:48',4,169),
-                            (256,'2019-10-06 18:57:26',4,NULL),
-                            (257,'2019-10-06 19:00:20',4,169),
-                            (258,'2019-10-06 19:00:24',5,169),
-                            (259,'2019-10-06 19:00:25',2,169),
-                            (260,'2019-10-06 19:00:26',3,169),
-                            (261,'2019-10-06 19:00:27',1,169),
-                            (262,'2019-10-06 19:00:28',2,169),
-                            (263,'2019-10-06 19:00:29',1,169),
-                            (264,'2019-10-06 19:00:32',1,169),
-                            (265,'2019-10-06 19:00:33',1,169),
                             (266,'2019-10-06 19:00:33',1,169),
-                            (267,'2019-10-06 19:00:33',1,169),
-                            (268,'2019-10-06 19:00:33',1,169),
-                            (269,'2019-10-06 19:00:34',1,169),
-                            (270,'2019-10-06 19:00:34',1,169),
-                            (271,'2019-10-06 19:01:46',1,169),
-                            (272,'2019-10-06 19:02:00',1,169),
-                            (273,'2019-10-06 19:02:02',2,169),
-                            (274,'2019-10-06 19:02:58',1,169),
-                            (275,'2019-10-06 19:02:59',2,169),
-                            (276,'2019-10-06 19:03:00',3,169),
-                            (277,'2019-10-06 19:03:01',4,169),
-                            (278,'2019-10-06 19:03:02',5,169),
-                            (279,'2019-10-06 19:03:15',4,167),
-                            (280,'2019-10-06 19:03:16',5,167),
-                            (281,'2019-10-06 19:03:17',3,167),
                             (282,'2019-10-06 19:03:17',2,167);
 /*!40000 ALTER TABLE `review` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `lesson_tag_teacher`
+--
+
+DROP TABLE IF EXISTS `lesson_tag_teacher`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lesson_tag_teacher` (
+                            `lesson_id` bigint(20) NOT NULL,
+                            `teacher_id` bigint(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lesson_tag_teacher`
+--
+
+LOCK TABLES `lesson_tag_teacher` WRITE;
+/*!40000 ALTER TABLE `lesson_tag_teacher` DISABLE KEYS */;
+INSERT INTO `lesson_tag_teacher` VALUES (244,41);
+/*!40000 ALTER TABLE `lesson_tag_teacher` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+--
+-- Table structure for table `lesson_tag_student`
+--
+
+DROP TABLE IF EXISTS `lesson_tag_student`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lesson_tag_student` (
+                                      `lesson_id` bigint(20) NOT NULL,
+                                      `student_id` bigint(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lesson_tag_student`
+--
+
+LOCK TABLES `lesson_tag_student` WRITE;
+/*!40000 ALTER TABLE `lesson_tag_student` DISABLE KEYS */;
+INSERT INTO `lesson_tag_student` VALUES (244,41);
+/*!40000 ALTER TABLE `lesson_tag_student` ENABLE KEYS */;
+UNLOCK TABLES;
+
 
 
 --

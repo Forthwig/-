@@ -11,3 +11,7 @@ signInButton.addEventListener('click', () => {
     containere.classList.remove("right-panel-active");
 });
 
+function myFunction() {
+    $('.container').css('background-color', '#485461');
+}
+

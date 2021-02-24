@@ -22,7 +22,6 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
         servlet.addMapping("/api/*");
     }
 
-
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class<?>[] { AppConfig.class, DBConfig.class, WSConfig.class, SecurityConfig.class};

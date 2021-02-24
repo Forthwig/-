@@ -1,9 +1,12 @@
 package junia.lab.core.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({ "Lessons" }) //eviter les boucle infinie en formats JSON
 public class Teacher extends GenericEntity implements Comparable<Teacher> {
 
     private String email;
@@ -16,6 +19,9 @@ public class Teacher extends GenericEntity implements Comparable<Teacher> {
 
     @ManyToMany(mappedBy = "Teacher")
     private List<Lesson> Lessons;
+
+    public Teacher() {
+    }
 
     public String getPassword() {
         return password;
@@ -31,6 +37,14 @@ public class Teacher extends GenericEntity implements Comparable<Teacher> {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Lesson> getLessons() {
+        return Lessons;
+    }
+
+    public void setLessons(List<Lesson> lessons) {
+        Lessons = lessons;
     }
 
     @Override

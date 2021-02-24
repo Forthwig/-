@@ -143,26 +143,26 @@ INSERT INTO `review` VALUES (245,'2019-10-06 18:38:48',4,169),
 UNLOCK TABLES;
 
 --
--- Table structure for table `lesson_tag_teacher`
+-- Table structure for table `lesson_teacher`
 --
 
-DROP TABLE IF EXISTS `lesson_tag_teacher`;
+DROP TABLE IF EXISTS `lesson_teacher`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `lesson_tag_teacher` (
+CREATE TABLE `lesson_teacher` (
                             `lesson_id` bigint(20) NOT NULL,
                             `teacher_id` bigint(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `lesson_tag_teacher`
+-- Dumping data for table `lesson_teacher`
 --
 
-LOCK TABLES `lesson_tag_teacher` WRITE;
-/*!40000 ALTER TABLE `lesson_tag_teacher` DISABLE KEYS */;
-INSERT INTO `lesson_tag_teacher` VALUES (244,41);
-/*!40000 ALTER TABLE `lesson_tag_teacher` ENABLE KEYS */;
+LOCK TABLES `lesson_teacher` WRITE;
+/*!40000 ALTER TABLE `lesson_teacher` DISABLE KEYS */;
+INSERT INTO `lesson_teacher` VALUES (244,41);
+/*!40000 ALTER TABLE `lesson_teacher` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -170,29 +170,29 @@ UNLOCK TABLES;
 -- Table structure for table `lesson_tag_student`
 --
 
-DROP TABLE IF EXISTS `lesson_tag_student`;
+DROP TABLE IF EXISTS `lesson_student`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `lesson_tag_student` (
+CREATE TABLE `lesson_student` (
                                       `lesson_id` bigint(20) NOT NULL,
                                       `student_id` bigint(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `lesson_tag_student`
+-- Dumping data for table `lesson_student`
 --
 
-LOCK TABLES `lesson_tag_student` WRITE;
-/*!40000 ALTER TABLE `lesson_tag_student` DISABLE KEYS */;
-INSERT INTO `lesson_tag_student` VALUES (244,41);
-/*!40000 ALTER TABLE `lesson_tag_student` ENABLE KEYS */;
+LOCK TABLES `lesson_student` WRITE;
+/*!40000 ALTER TABLE `lesson_student` DISABLE KEYS */;
+INSERT INTO `lesson_student` VALUES (244,41);
+/*!40000 ALTER TABLE `lesson_student` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
 
 --
--- Dumping events for database 'junia_lab03'
+-- Dumping events for database 'junia_lab'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

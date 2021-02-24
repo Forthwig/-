@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import junia.web.dto.TeacherDTO;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,7 +17,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
-@Path("/teacher")
+@Path("/teacher") //TODO redirect in .vm
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class TeacherController implements RestController {
@@ -31,34 +32,37 @@ public class TeacherController implements RestController {
 
     /** WEB **/
 
-    @RequestMapping(path = "/teachers", method = RequestMethod.GET)
-    public String getListOfCompanies(ModelMap modelMap){
-        modelMap.put("teachers",this.teacherService.findAll());
-        return  "TeacherList";
+    @GET
+    @RequestMapping("/{teacherId}")
+    public String getTeacherById(@PathVariable("teacherId") long teacherId, ModelMap modelMap){
+        Teacher teacher = teacherService.getById(teacherId);
+        modelMap.put("email",teacher.getEmail());
+        modelMap.put("lesson",teacher.getLessons());
+        return "profil";
     }
 
     /** API **/
 
     @POST
-    @Path("/teachers/add")
+    @Path("/add")
     public void saveReview(Teacher review){
         teacherService.save(review);
     }
 
     @DELETE
-    @Path("/teachers/remove/{teacherId}")
+    @Path("/remove/{teacherId}")
     public void deleteReviewById(@PathParam("teacherId") long reviewId){
         teacherService.deleteTeacherById(reviewId);
     }
 
     @GET
-    @Path("/teachers")
+    @Path("")
     public Map<Long,String> listTeacher(){
         return teacherService.findAll().stream().collect(Collectors.toMap(Teacher::getId, Teacher::getEmail));
     }
 
     @GET
-    @Path("/teachers/{teacherId}")
+    @Path("/{teacherId}")
     public TeacherDTO getTeacherById(@PathParam("teacherId") long teacherId){
         Teacher teacher = teacherService.getById(teacherId);
         TeacherDTO result = new TeacherDTO();

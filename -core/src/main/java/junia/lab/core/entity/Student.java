@@ -16,8 +16,7 @@ public class Student extends GenericEntity implements Comparable<Student> {
 
     private String enable; //TODO Alaways 1
 
-    public void setId(Long id) {
-        this.id = id;
+    public Student() {
     }
 
     public String getPassword() {

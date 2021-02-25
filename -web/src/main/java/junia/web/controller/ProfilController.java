@@ -14,10 +14,10 @@ public class ProfilController implements RestController {
         this.reviewService = reviewService;
     }
 
-    @RequestMapping(value = "student/profil/{studenId}", method = RequestMethod.GET)
-    public String getStudentPage(@PathVariable("studenId") long studenId, ModelMap modelMap){
+    @RequestMapping(value = "student/profil/{studentId}", method = RequestMethod.GET)
+    public String getStudentPage(@PathVariable("studentId") long studentId, ModelMap modelMap){
         //TODO renvoie la liste de ces commentaire.
-        modelMap.put("nb",reviewService.getReviewByStudent(studenId).size());
+        modelMap.put("nb",reviewService.getReviewByStudent(studentId).size());
         return "profil";
     }
 

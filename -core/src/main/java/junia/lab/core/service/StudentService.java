@@ -31,6 +31,7 @@ public class StudentService {
         return studentDAO.getOne(studentID);
     }
 
+    public Student getByEmail(String email){return studentDAO.getOneByEmail(email);}
 
     public List<Student> findAll() {
         return studentDAO.findAll();

@@ -1,6 +1,8 @@
 package junia.web.controller;
 
 import junia.lab.core.service.ReviewService;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +20,10 @@ public class HomeController implements RestController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getHomePage(ModelMap modelMap){
+        if(SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            modelMap.put("user", user.getUsername());
+        }
         return "index";
     }
 }

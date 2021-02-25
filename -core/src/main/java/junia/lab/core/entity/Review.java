@@ -12,7 +12,7 @@ public class Review extends GenericEntity implements Comparable<Review> {
 
     private Date dateOfReview;
 
-    private int StudenId;
+    private int studenId;
 
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //We need this annotation for the deserialization only

@@ -29,5 +29,6 @@ public class ReviewService {
 
     public List<Review> getReviewByLessonByTeacher(long teacherId){return reviewDAO.getReviewByLessonByTeacher(teacherId);}
 
+    public List<Review> getReview(){ return  reviewDAO.findAll();}
 
 }

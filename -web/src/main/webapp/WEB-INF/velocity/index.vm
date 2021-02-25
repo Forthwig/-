@@ -47,9 +47,16 @@
             <li>
                 <a href="#" style="--i: 0.05s;" class="myLink">Index</a>
             </li>
-            <li>
-                <a href="login" style="--i: 0.1s;" class="myLink">Se connecter</a>
-            </li>
+            #if ($email)
+                <li>
+                    <a href="logout" style="--i: 0.3s;" class="myLink">Déconnection</a>
+                </li>
+            #else
+                <li>
+                    <a href="login" style="--i: 0.3s;" class="myLink">Connection</a>
+                </li>
+
+            #end
             <li>
                 <a href="#" style="--i: 0.15s;" class="myLink">Ecrire</a>
             </li>
@@ -63,11 +70,7 @@
                 <a href="#" style="--i: 0.3s;" class="myLink">Contact</a>
             </li>
 
-            #if ($email)
-                <li>
-                    <a href="/logout" style="--i: 0.3s;" class="myLink">Déconnection</a>
-                </li>
-            #end
+
         </ul>
     </div>
 </div>

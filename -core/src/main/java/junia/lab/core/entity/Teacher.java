@@ -9,7 +9,7 @@ import java.util.List;
 @JsonIgnoreProperties({ "Lessons" }) //eviter les boucle infinie en formats JSON
 public class Teacher extends GenericEntity implements Comparable<Teacher> {
 
-    private String email;
+    private String mail;
 
     private String password;
 
@@ -32,11 +32,11 @@ public class Teacher extends GenericEntity implements Comparable<Teacher> {
     }
 
     public String getEmail() {
-        return email;
+        return mail;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.mail = email;
     }
 
     public List<Lesson> getLessons() {

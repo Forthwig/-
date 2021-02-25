@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface StudentDAO extends JpaRepository<Student,Long> {
 
-    @Query("SELECT DISTINCT s FROM Student s WHERE s.email=:email")
-    public Student getOneByEmail(@Param("email") String email);
+    @Query("SELECT DISTINCT s FROM Student s WHERE s.mail=:mail")
+    public Student getOneByEmail(@Param("mail") String mail);
 
 }

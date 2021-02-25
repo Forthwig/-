@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Student extends GenericEntity implements Comparable<Student> {
 
-    private String email;
+    private String mail;
 
     private String password;
 
@@ -28,11 +28,11 @@ public class Student extends GenericEntity implements Comparable<Student> {
     }
 
     public String getEmail() {
-        return email;
+        return mail;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.mail = email;
     }
 
     @Override

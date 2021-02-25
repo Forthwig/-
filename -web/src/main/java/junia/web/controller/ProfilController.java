@@ -28,8 +28,11 @@ public class ProfilController implements RestController {
     @RequestMapping(value = "student", method = RequestMethod.GET)
     public String getStudentPage( ModelMap modelMap){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(user);
+        System.out.println(user.getUsername());
         Student student = studentService.getByEmail(user.getUsername());
-        modelMap.put("nb",reviewService.getReviewByStudent(student.getId()).size());
+        System.out.println(student);
+        //modelMap.put("nb",reviewService.getReviewByStudent(student.getId()).size());
         modelMap.addAttribute("email", student.getEmail());//
         return "profil";
     }
@@ -38,7 +41,6 @@ public class ProfilController implements RestController {
     public String getTeacherPage( ModelMap modelMap){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Teacher teacher = teacherService.getByEmail(user.getUsername());
-        modelMap.put("nb",reviewService.getReviewByStudent(teacher.getId()).size());
         modelMap.addAttribute("email", teacher.getEmail());//
         return "profil";
     }

@@ -23,6 +23,11 @@ public class HomeController implements RestController {
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             modelMap.put("email", user.getUsername());
+            modelMap.put("role", user.getAuthorities().toString());
+            System.out.println(user.getAuthorities().toString());
+        }
+        else{
+            modelMap.remove("email");
         }
         return "index";
     }

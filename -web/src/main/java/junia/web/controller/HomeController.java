@@ -20,9 +20,9 @@ public class HomeController implements RestController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getHomePage(ModelMap modelMap){
-        if(SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            modelMap.put("user", user.getUsername());
+            modelMap.put("email", user.getUsername());
         }
         return "index";
     }

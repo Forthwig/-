@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Професор</title>
+    <link rel="stylesheet" href="../../resources/css/profil.css" />
+</head>
+
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="menu">
+            <h3 class="logo">Професор</h3>
+            <div class="hamburger-menu"  >
+                <div class="bar" onclick="myFunction()"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="main">
+            <header>
+                <div class="wrapper">
+                    <main class="maine">
+                        <section class="section">
+                            <header class="section__header" style="margin-top:30px; ">
+                                <h2 class="section__title">Mes commentaires</h2>
+                            </header>
+                            <ul class="project">
+                                <li class="project__item">
+                                    <a href="#" class="project__link focus--box-shadow">
+                                        <div class="project__wrapper">
+                                            <div class="project__element project__inform">
+                    <span class="project__inform-name"
+                    >Product presentation</span
+                    >
+                                            </div>
+                                            <div class="project__element project__date">
+                                                <time class="date" datetime="2020-05-05T10:00:00"
+                                                >05 May, 2020</time
+                                                >
+                                            </div>
+                                            <div class="project__element project__status">
+                                                <span class="status status--published">Published</span>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </section>
+                        <section class="section">
+                            <header class="section__header">
+                                <h2 class="section__title">Ecrire un commentaire</h2>
+                            </header>
+                            <ul class="project">
+                                <li class="project__item">
+                                    <a href="#" class="project__link focus--box-shadow">
+                                        <form action="">
+                                            <input type="text" placeholder="Titre" />
+                                            <select name="promo" id="teacher-selected" >
+                                                <option value="">--Le prof--</option>
+                                                <option value="62">Promotion 62</option>
+                                                <option value="63"> Promotion 63</option>
+                                                <option value="64"> Promotion 64</option>
+                                                <option value="65">Promotion 65</option>
+                                                <option value="66">Promotion 66</option>
+                                            </select>
+                                            <textarea type="text" class="input-field" placeholder="Ton commentaire">
+              </textarea>
+                                            <button class="btn bnt">Envoyer</button>
+                                        </form>
+                                    </a>
+                                </li>
+                            </ul>
+
+
+
+                        </section>
+                    </main>
+                    <aside class="aside">
+                        <section class="section">
+                            <div class="profile-main">
+                                <button
+                                        class="profile-main__setting focus--box-shadow"
+                                        type="button"
+                                >
+                                    <img
+                                            class="profile-main__photo"
+                                            src="./img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
+                                            alt="Profile photo"
+                                    />
+                                </button>
+                                <h1 class="profile-main__name">Thomas Dubois</h1>
+                            </div>
+
+                            <hr>
+                            <input type="text" placeholder="Surnom" />
+                            <select name="promo" id="promo-selected" >
+                                <option value="">--Choisit ta promo--</option>
+                                <option value="62">Promotion 62</option>
+                                <option value="63"> Promotion 63</option>
+                                <option value="64"> Promotion 64</option>
+                                <option value="65">Promotion 65</option>
+                                <option value="66">Promotion 66</option>
+                            </select>
+                            <button class="btn">Appliquer</button>
+
+
+                            <hr>
+
+                            <ul class="statistics">
+                                <li class="statistics__entry">
+                                    <a class="statistics__entry-description" href="#">Mes commentaires</a
+                                    ><span class="statistics__entry-quantity">5</span>
+                                </li>
+                            </ul>
+
+                        </section>
+                    </aside>
+                </div>
+            </header>
+        </div>
+
+        <div class="shadow one"></div>
+        <div class="shadow two"></div>
+    </div>
+
+    <div class="links">
+        <ul>
+            <li>
+                <a href="" style="--i: 0.05s;" class="myLink">Index</a>
+            </li>
+            <li>
+                <a href="login" style="--i: 0.1s;" class="myLink">Se connecter</a>
+            </li>
+            <li>
+                <a href="#" style="--i: 0.15s;" class="myLink">Ecrire</a>
+            </li>
+            <li>
+                <a href="#" style="--i: 0.2s;" class="myLink">Classement</a>
+            </li>
+            <li>
+                <a href="#" style="--i: 0.25s;" class="myLink">Mon profil</a>
+            </li>
+            <li>
+                <a href="#" style="--i: 0.3s;" class="myLink">Contact</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script src="../../resources/js/script.js"></script>
+<script src="../../resources/js/log.js"></script>
+<script src="../../resources/js/jquery.js"></script>
+</body>
+</html>

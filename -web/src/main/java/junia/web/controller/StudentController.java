@@ -4,6 +4,7 @@ import junia.lab.core.entity.Student;
 import junia.lab.core.entity.Teacher;
 import junia.lab.core.service.StudentService;
 import junia.lab.core.service.TeacherService;
+import junia.web.controller.RestController;
 import junia.web.dto.StudentDTO;
 import junia.web.dto.TeacherDTO;
 import org.slf4j.Logger;
@@ -19,7 +20,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
-@Path("/student") //TODO redirect in .vm
+@Path("/student")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class StudentController implements RestController {
@@ -30,17 +31,6 @@ public class StudentController implements RestController {
 
     public StudentController(StudentService reviewService) {
         this.studentService = reviewService;
-    }
-
-    /** WEB **/
-
-    @GET
-    @RequestMapping("/{studenId}")
-    public String getTeacherById(@PathVariable("studenId") long teacherId, ModelMap modelMap){
-        Student student = studentService.getById(teacherId);
-        modelMap.put("email",student.getEmail());
-        modelMap.put("id",student.getId());
-        return "profil";
     }
 
     /** API **/

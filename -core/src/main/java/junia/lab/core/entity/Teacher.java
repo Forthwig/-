@@ -17,7 +17,7 @@ public class Teacher extends GenericEntity implements Comparable<Teacher> {
 
     private String enable; //TODO Alaways 1
 
-    @ManyToMany(mappedBy = "Teacher")
+    @ManyToMany(mappedBy = "Teachers")
     private List<Lesson> Lessons;
 
     public Teacher() {

@@ -2,6 +2,7 @@ package junia.web.controller;
 
 import junia.lab.core.entity.Review;
 import junia.lab.core.service.ReviewService;
+import junia.web.controller.RestController;
 import org.springframework.stereotype.Controller;
 
 import javax.ws.rs.*;
@@ -11,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/reviews")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class ReviewController implements RestController{
+public class ReviewController implements RestController {
 
     private ReviewService reviewService;
 

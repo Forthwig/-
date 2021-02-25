@@ -2,6 +2,7 @@ package junia.web.controller;
 
 import junia.lab.core.entity.Teacher;
 import junia.lab.core.service.TeacherService;
+import junia.web.controller.RestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
-@Path("/teacher") //TODO redirect in .vm
+@Path("/teacher")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class TeacherController implements RestController {
@@ -28,18 +29,6 @@ public class TeacherController implements RestController {
 
     public TeacherController(TeacherService reviewService) {
         this.teacherService = reviewService;
-    }
-
-    /** WEB **/
-
-    @GET
-    @RequestMapping("/{teacherId}")
-    public String getTeacherById(@PathVariable("teacherId") long teacherId, ModelMap modelMap){
-        Teacher teacher = teacherService.getById(teacherId);
-        modelMap.put("email",teacher.getEmail());
-        modelMap.put("lesson",teacher.getLessons());
-        modelMap.put("id",teacher.getId());
-        return "profil";
     }
 
     /** API **/

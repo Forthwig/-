@@ -125,6 +125,7 @@ CREATE TABLE `review` (
                           `id` bigint(20) NOT NULL,
                           `dateOfReview` datetime DEFAULT NULL,
                           `score` int(11) NOT NULL,
+                          `student_id` int(11) NOT NULL,
                           `lesson_id` bigint(20) DEFAULT NULL,
                           PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -136,9 +137,9 @@ CREATE TABLE `review` (
 
 LOCK TABLES `review` WRITE;
 /*!40000 ALTER TABLE `review` DISABLE KEYS */;
-INSERT INTO `review` VALUES (245,'2019-10-06 18:38:48',4,169),
-                            (266,'2019-10-06 19:00:33',1,169),
-                            (282,'2019-10-06 19:03:17',2,167);
+INSERT INTO `review` VALUES (245,'2019-10-06 18:38:48',1,4,169),
+                            (266,'2019-10-06 19:00:33',1,1,169),
+                            (282,'2019-10-06 19:03:17',1,2,167);
 /*!40000 ALTER TABLE `review` ENABLE KEYS */;
 UNLOCK TABLES;
 

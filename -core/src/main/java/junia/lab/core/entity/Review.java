@@ -12,6 +12,8 @@ public class Review extends GenericEntity implements Comparable<Review> {
 
     private Date dateOfReview;
 
+    private int StudenId;
+
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //We need this annotation for the deserialization only
     private Lesson lesson;
@@ -30,6 +32,14 @@ public class Review extends GenericEntity implements Comparable<Review> {
 
     public void setDateOfReview(Date dateOfReview) {
         this.dateOfReview = dateOfReview;
+    }
+
+    public int getStudenId() {
+        return StudenId;
+    }
+
+    public void setStudenId(int studenId) {
+        StudenId = studenId;
     }
 
     public Lesson getLesson() { return lesson; }

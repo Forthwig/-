@@ -18,11 +18,10 @@ public class LessonService {
         this.lessonDAO = lessonDAO;
     }
 
-    public Lesson findById(long lessonId) {
-        return lessonDAO.getOne(lessonId);
-    }
-
     public List<Lesson> findAll() {
         return lessonDAO.findAll();
     }
+
+    public Lesson findById(long lessonID){ return lessonDAO.getOneWithTeachersAndReviewsAndStudents(lessonID);}
+
 }

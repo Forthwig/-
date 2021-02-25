@@ -39,6 +39,7 @@ public class StudentController implements RestController {
     public String getTeacherById(@PathVariable("studenId") long teacherId, ModelMap modelMap){
         Student student = studentService.getById(teacherId);
         modelMap.put("email",student.getEmail());
+        modelMap.put("id",student.getId());
         return "profil";
     }
 

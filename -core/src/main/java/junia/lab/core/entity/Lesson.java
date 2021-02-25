@@ -17,7 +17,7 @@ public class Lesson extends GenericEntity implements Comparable<Lesson>  {
 
     @ManyToMany
     @JoinTable(name = "Lesson_student", joinColumns = @JoinColumn(name = "lesson_id"), inverseJoinColumns = @JoinColumn(name = "Student_id"))
-    private Set<Teacher> Students;
+    private Set<Student> Students;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="lesson")
     private Set<Review> reviews;
@@ -46,11 +46,11 @@ public class Lesson extends GenericEntity implements Comparable<Lesson>  {
         Teachers = teachers;
     }
 
-    public Set<Teacher> getStudents() {
+    public Set<Student> getStudents() {
         return Students;
     }
 
-    public void setStudents(Set<Teacher> students) {
+    public void setStudents(Set<Student> students) {
         Students = students;
     }
 

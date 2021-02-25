@@ -38,6 +38,7 @@ public class TeacherController implements RestController {
         Teacher teacher = teacherService.getById(teacherId);
         modelMap.put("email",teacher.getEmail());
         modelMap.put("lesson",teacher.getLessons());
+        modelMap.put("id",teacher.getId());
         return "profil";
     }
 

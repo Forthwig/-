@@ -1,19 +1,17 @@
 package junia.web.dto;
 
-import junia.lab.core.entity.Language;
-import junia.lab.core.entity.Teacher;
+import junia.lab.core.entity.Review;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import java.util.List;
 import java.util.Set;
 
 public class LessonDTO {
 
     private String title;
-    private Language language;
-    private Set<Teacher> Teachers;
-    private Set<Teacher> Students;
+    private String language;
+    private List<String> Teachers;
+    private List<String> Students;
+    private Set<Review> Reviews;
 
     public String getTitle() {
         return title;
@@ -23,27 +21,35 @@ public class LessonDTO {
         this.title = title;
     }
 
-    public Language getLanguage() {
+    public String getLanguage() {
         return language;
     }
 
-    public void setLanguage(Language language) {
+    public void setLanguage(String language) {
         this.language = language;
     }
 
-    public Set<Teacher> getTeachers() {
+    public List<String> getTeachers() {
         return Teachers;
     }
 
-    public void setTeachers(Set<Teacher> teachers) {
+    public void setTeachers(List<String> teachers) {
         Teachers = teachers;
     }
 
-    public Set<Teacher> getStudents() {
+    public List<String> getStudents() {
         return Students;
     }
 
-    public void setStudents(Set<Teacher> students) {
+    public void setStudents(List<String> students) {
         Students = students;
+    }
+
+    public Set<Review> getReviews() {
+        return Reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        Reviews = reviews;
     }
 }

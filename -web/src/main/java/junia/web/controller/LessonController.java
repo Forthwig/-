@@ -1,6 +1,9 @@
 package junia.web.controller;
 
 import junia.lab.core.entity.Lesson;
+import junia.lab.core.entity.Review;
+import junia.lab.core.entity.Student;
+import junia.lab.core.entity.Teacher;
 import junia.lab.core.service.LessonService;
 import junia.web.dto.LessonDTO;
 import org.slf4j.Logger;
@@ -38,18 +41,19 @@ public class LessonController implements RestController{
 
     @GET
     @Path("")
-    public Map<Long,String> listBooks(){
+    public Map<Long,String> listlessons(){
         return lessonService.findAll().stream().collect(Collectors.toMap(Lesson::getId, Lesson::getTitle));
     }
 
     @GET
     @Path("/{lessonId}")
-    public LessonDTO getBookById(@PathVariable("lessonId") long lessonId){
+    public LessonDTO getLessonById(@PathVariable("lessonId") long lessonId){
         Lesson lesson = lessonService.findById(lessonId);
         LessonDTO result = new LessonDTO();
-        result.setLanguage(lesson.getLanguage());
-        result.setTeachers(lesson.getTeachers());
-        result.setStudents(lesson.getStudents());
+        result.setLanguage(lesson.getLanguage().toString());
+        result.setTeachers(lesson.getTeachers().stream().map(Teacher::toString).collect(Collectors.toList()));
+        result.setStudents(lesson.getStudents().stream().map(Student::toString).collect(Collectors.toList()));
+        result.setReviews(lesson.getReviews());
         result.setTitle(lesson.getTitle());
         return result;
     }

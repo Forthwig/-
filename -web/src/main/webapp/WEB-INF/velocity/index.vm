@@ -62,6 +62,12 @@
             <li>
                 <a href="#" style="--i: 0.3s;" class="myLink">Contact</a>
             </li>
+
+            #if ($email)
+                <li>
+                    <a href="/logout" style="--i: 0.3s;" class="myLink">Déconnection</a>
+                </li>
+            #end
         </ul>
     </div>
 </div>

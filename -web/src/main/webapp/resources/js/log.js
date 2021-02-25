@@ -3,6 +3,7 @@ const signInButton = document.getElementById('signIn');
 const containere = document.getElementById('containere');
 var menuCSSChange = document.getElementById('changecss');
 
+
 signUpButton.addEventListener('click', () => {
     $('.containere').classList.add("right-panel-active");
 });
@@ -12,5 +13,6 @@ signInButton.addEventListener('click', () => {
 });
 
 function myFunction() {
+
     $('.container').css('background-color', '#485461');
     }

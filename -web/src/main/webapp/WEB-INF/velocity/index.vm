@@ -27,7 +27,11 @@
                             La première plateforme ISEN permettant de noter les différents profs et intervenants.
                         </p>
                         <a href="login" style="--i: 0.05s;" class="myLink">
-                            <button class="btn">Se connecter</button>
+                            #if ($email)
+                                <button class="btn">Mon profil</button>
+                            #else
+                                <button class="btn">Se connecter</button>
+                            #end
                         </a>
                     </div>
                 </div>

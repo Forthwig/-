@@ -1,10 +1,13 @@
 package junia.web.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,4 +37,7 @@ public class LoginController implements RestController {
         }
         return "redirect:/";
     }
+
+    //User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    //model.addAttribute("fullname", user.getFirstName() + " " + user.getLastName());
 }

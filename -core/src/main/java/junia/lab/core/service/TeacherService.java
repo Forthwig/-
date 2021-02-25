@@ -34,4 +34,7 @@ public class TeacherService {
     }
 
 
+    public Teacher getByEmail(String email) {
+        return teacherDAO.getOneByEmail(email);
+    }
 }

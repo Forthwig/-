@@ -40,10 +40,10 @@
                                             >
                                                 </div>
                                                 <div class="project__element project__date">
-                                                    <p>$com</p>
+                                                    <p>$prof</p>
                                                 </div>
                                                 <div class="project__element project__status">
-                                                    <span class="status status--published">$prof</span>
+                                                    <span class="status status--published">$com</span>
                                                 </div>
 
                                             </div>
@@ -64,12 +64,9 @@
                                         <form action="">
                                             <input type="text" placeholder="Titre" />
                                             <select name="promo" id="teacher-selected" >
-                                                <option value="">--Le prof--</option>
-                                                <option value="62">Promotion 62</option>
-                                                <option value="63"> Promotion 63</option>
-                                                <option value="64"> Promotion 64</option>
-                                                <option value="65">Promotion 65</option>
-                                                <option value="66">Promotion 66</option>
+                                                #foreach($teacher in $teacherbdd)
+                                                #end
+                                                <option value="">$teacher</option>
                                             </select>
                                             <textarea type="text" class="input-field" placeholder="Ton commentaire">
               </textarea>
@@ -97,7 +94,7 @@
                                             alt="Profile photo"
                                     />
                                 </button>
-                                <h1 class="profile-main__name">Thomas Dubois</h1>
+                                <h1 class="profile-main__name">$name</h1>
                             </div>
 
                             <hr>

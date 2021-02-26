@@ -29,21 +29,21 @@
                             </header>
                             <ul class="project">
 
-                                #foreach ($com in $mycom)
+                                #foreach ($review in $reviews)
 
                                     <li class="project__item">
                                         <a href="#" class="project__link focus--box-shadow">
                                             <div class="project__wrapper">
                                                 <div class="project__element project__inform">
                                             <span class="project__inform-name"
-                                            > $title </span
+                                            > $review.lesson.title </span
                                             >
                                                 </div>
                                                 <div class="project__element project__date">
-                                                    <p>$prof</p>
+                                                    <p>$review.dateOfReview</p>
                                                 </div>
                                                 <div class="project__element project__status">
-                                                    <span class="status status--published">$com</span>
+                                                    <span class="status status--published">$review.text</span>
                                                 </div>
 
                                             </div>
@@ -64,9 +64,9 @@
                                         <form action="">
                                             <input type="text" placeholder="Titre" />
                                             <select name="promo" id="teacher-selected" >
-                                                #foreach($teacher in $teacherbdd)
+                                                #foreach($teacher in $teachers)
+                                                    <option value="">$teacher.email</option>
                                                 #end
-                                                <option value="">$teacher</option>
                                             </select>
                                             <textarea type="text" class="input-field" placeholder="Ton commentaire">
               </textarea>
@@ -94,19 +94,20 @@
                                             alt="Profile photo"
                                     />
                                 </button>
-                                <h1 class="profile-main__name">$name</h1>
+                                #if ($student.surnom)
+                                    <h1 class="profile-main__name">$student.surnom</h1>
+                                #else
+                                    <h1 class="profile-main__name">$student.email</h1>
+                                #end
                             </div>
 
                             <hr>
-
                             <input type="text" placeholder="Surnom" />
                             <select name="promo" id="promo-selected" >
                                 <option value="">--Choisit ta promo--</option>
-                                <option value="62">Promotion 62</option>
-                                <option value="63"> Promotion 63</option>
-                                <option value="64"> Promotion 64</option>
-                                <option value="65">Promotion 65</option>
-                                <option value="66">Promotion 66</option>
+                                #foreach($promo in $promos)
+                                    <option value="$promo">$promo</option>
+                                #end
                             </select>
                             <p style="position: relative;left: 29%;margin-top: 12px;margin-bottom: 3px;">Une petite photo ? </p>
                             <input type="file"
@@ -114,13 +115,12 @@
                                    accept="image/png, image/jpeg">
                             <button class="btn">Appliquer</button>
 
-
                             <hr>
 
                             <ul class="statistics">
                                 <li class="statistics__entry">
                                     <a class="statistics__entry-description" href="#">Mes commentaires</a
-                                    ><span class="statistics__entry-quantity">5</span>
+                                    ><span class="statistics__entry-quantity">$reviews.size()</span>
                                 </li>
                             </ul>
 

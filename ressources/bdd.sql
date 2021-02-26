@@ -26,6 +26,7 @@ DROP TABLE IF EXISTS `student`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `student` (
                              `id` bigint(20) NOT NULL,
+                             `image` varchar(255) DEFAULT NULL,
                              `mail` varchar(255) DEFAULT NULL,
                              `password` varchar(255) DEFAULT NULL,
                              `enable` int(1) DEFAULT NULL,
@@ -40,8 +41,8 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (1,'matthieu.desmarescaux@isen.yncrea.fr','matthieu',1,'ROLE_STUDENT'),
-                             (2,'thomas.dubois@isen.yncrea.fr','thomas',1,'ROLE_STUDENT');
+INSERT INTO `student` VALUES (1,NULL,'matthieu.desmarescaux@isen.yncrea.fr','matthieu',1,'ROLE_STUDENT'),
+                             (2,NULL,'thomas.dubois@isen.yncrea.fr','thomas',1,'ROLE_STUDENT');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,6 +55,7 @@ DROP TABLE IF EXISTS `teacher`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `teacher` (
                            `id` bigint(20) NOT NULL,
+                           `surnom` varchar DEFAULT NULL,
                            `mail` varchar(255) DEFAULT NULL,
                            `password` varchar(255) DEFAULT NULL,
                            `enable` int(1) DEFAULT NULL,
@@ -68,8 +70,8 @@ CREATE TABLE `teacher` (
 
 LOCK TABLES `teacher` WRITE;
 /*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
-INSERT INTO `teacher` VALUES (1,'matthieu.desmarescaux@yncrea.fr','matthieu',1,'ROLE_TEACHER'),
-                             (2,'thomas.dubois@yncrea.fr','thomas',1,'ROLE_TEACHER');
+INSERT INTO `teacher` VALUES (1,'MatD3mons','matthieu.desmarescaux@yncrea.fr','matthieu',1,'ROLE_TEACHER'),
+                             (2,NULL,'thomas.dubois@yncrea.fr','thomas',1,'ROLE_TEACHER');
 /*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,20 +97,16 @@ CREATE TABLE `lesson` (
 
 LOCK TABLES `lesson` WRITE;
 /*!40000 ALTER TABLE `lesson` DISABLE KEYS */;
-INSERT INTO `lesson` VALUES (165,'EN','Angular: Up and Running'),
-                            (166,'EN','Architecting Modern Java EE applications'),
-                            (167,'EN','Automate it!'),
-                            (168,'EN','Building Webapps with Spring 5 and Angular'),
-                            (169,'EN','CSS Pocket Reference, 5th Edition'),
-                            (170,'EN','CSS: The Definitive Guide, 4th Edition'),
-                            (171,'EN','Cloud Foundry : The definitive guide'),
-                            (172,'EN','Cloud native infrastructure'),
-                            (173,'EN','Cloud-Native Applications in Java'),
-                            (174,'EN','Continuous Delivery with Docker and Jenkins'),
-                            (175,'EN','Data Visualization with Python and JavaScript'),
-                            (176,'EN','Database reliability engineering'),
-                            (177,'EN','Deploying to Openshift'),
-                            (178,'EN','Deployment with Docker');
+INSERT INTO `lesson` VALUES (1,'FR','Angular: Up and Running'),
+                            (2,'FR','Architecting Modern Java EE applications'),
+                            (3,'EN','Automate it!'),
+                            (4,'EN','Building Webapps with Spring 5 and Angular'),
+                            (5,'EN','CSS Pocket Reference, 5th Edition'),
+                            (6,'EN','CSS: The Definitive Guide, 4th Edition'),
+                            (7,'EN','Cloud Foundry : The definitive guide'),
+                            (8,'EN','Cloud native infrastructure'),
+                            (9,'EN','Cloud-Native Applications in Java'),
+                            (10,'EN','Continuous Delivery with Docker and Jenkins');
 /*!40000 ALTER TABLE `lesson` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +122,8 @@ DROP TABLE IF EXISTS `review`;
 CREATE TABLE `review` (
                           `id` bigint(20) NOT NULL,
                           `dateOfReview` datetime DEFAULT NULL,
-                          `score` int(11) NOT NULL,
+                          `text` varchar(255) NOT NULL,
+                          `promo` varchar(255) NOT NULL,
                           `student_id` int(11) NOT NULL,
                           `lesson_id` bigint(20) DEFAULT NULL,
                           PRIMARY KEY (`id`)
@@ -137,9 +136,9 @@ CREATE TABLE `review` (
 
 LOCK TABLES `review` WRITE;
 /*!40000 ALTER TABLE `review` DISABLE KEYS */;
-INSERT INTO `review` VALUES (245,'2019-10-06 18:38:48',1,4,169),
-                            (266,'2019-10-06 19:00:33',1,1,169),
-                            (282,'2019-10-06 19:03:17',1,2,167);
+INSERT INTO `review` VALUES (245,'2019-10-06 18:38:48','tu pu','PROMO62',1,169),
+                            (266,'2019-10-06 19:00:33','tu pu','PROMO62',1,169),
+                            (282,'2019-10-06 19:03:17','tu pu','PROMO62',1,167);
 /*!40000 ALTER TABLE `review` ENABLE KEYS */;
 UNLOCK TABLES;
 

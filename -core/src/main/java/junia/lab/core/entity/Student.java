@@ -1,22 +1,58 @@
 package junia.lab.core.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Student extends GenericEntity implements Comparable<Student> {
 
     private String mail;
 
+    private String surnom;
+
     private String password;
+
+    private String image;
+
+    @Enumerated(EnumType.STRING)
+    private Promo promo;
 
     private String role; //TODO Alaways Student
 
     private String enable; //TODO Alaways 1
 
     public Student() {
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getSurnom() {
+        return surnom;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setSurnom(String surnom) {
+        this.surnom = surnom;
+    }
+
+    public Promo getPromo() {
+        return promo;
+    }
+
+    public void setPromo(Promo promo) {
+        this.promo = promo;
     }
 
     public String getPassword() {

@@ -8,7 +8,9 @@ import java.util.Date;
 @Entity
 public class Review extends GenericEntity implements Comparable<Review> {
 
-    private int score;
+    private String title;
+
+    private String text;
 
     private Date dateOfReview;
 
@@ -19,20 +21,20 @@ public class Review extends GenericEntity implements Comparable<Review> {
 
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //We need this annotation for the deserialization only
-    @JoinColumn(name = "lesson_id", referencedColumnName = "id")
-    private Lesson lesson;
+    @JoinColumn(name = "teacher_id", referencedColumnName = "id")
+    private Teacher teacher;
 
-    public int getScore() {
-        return score;
-    }
+    public String getText() { return text; }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
+    public void setText(String text) { this.text = text; }
 
     public Date getDateOfReview() {
         return dateOfReview;
     }
+
+    public String getTitle() { return title; }
+
+    public void setTitle(String title) { this.title = title; }
 
     public Student getStudent() { return student; }
 
@@ -42,9 +44,13 @@ public class Review extends GenericEntity implements Comparable<Review> {
         this.dateOfReview = dateOfReview;
     }
 
-    public Lesson getLesson() { return lesson; }
+    public Teacher getTeacher() {
+        return teacher;
+    }
 
-    public void setLesson(Lesson lesson) { this.lesson = lesson; }
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
 
     @Override
     public int compareTo(final Review o) {

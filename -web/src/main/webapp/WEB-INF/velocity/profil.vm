@@ -28,20 +28,22 @@
                                 <h2 class="section__title">Mes commentaires</h2>
                             </header>
                             <ul class="project">
-                                #foreach ($review in $reviews)
+
+                                #foreach ($com in $mycom)
+
                                     <li class="project__item">
                                         <a href="#" class="project__link focus--box-shadow">
                                             <div class="project__wrapper">
                                                 <div class="project__element project__inform">
-                                            <span class="project__inform-name">
-                                                $review.student.email
-                                            </span>
+                                            <span class="project__inform-name"
+                                            > $title </span
+                                            >
                                                 </div>
                                                 <div class="project__element project__date">
-                                                    <p>$review.lesson.title</p>
+                                                    <p>$prof</p>
                                                 </div>
                                                 <div class="project__element project__status">
-                                                    <span class="status status--published">$review.score</span>
+                                                    <span class="status status--published">$com</span>
                                                 </div>
 
                                             </div>
@@ -62,12 +64,9 @@
                                         <form action="">
                                             <input type="text" placeholder="Titre" />
                                             <select name="promo" id="teacher-selected" >
-                                                <option value="">--Le prof--</option>
-                                                <option value="62">Promotion 62</option>
-                                                <option value="63"> Promotion 63</option>
-                                                <option value="64"> Promotion 64</option>
-                                                <option value="65">Promotion 65</option>
-                                                <option value="66">Promotion 66</option>
+                                                #foreach($teacher in $teacherbdd)
+                                                #end
+                                                <option value="">$teacher</option>
                                             </select>
                                             <textarea type="text" class="input-field" placeholder="Ton commentaire">
               </textarea>
@@ -95,7 +94,7 @@
                                             alt="Profile photo"
                                     />
                                 </button>
-                                <h1 class="profile-main__name">$mail</h1>
+                                <h1 class="profile-main__name">$name</h1>
                             </div>
 
                             <hr>

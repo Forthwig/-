@@ -1,97 +1,45 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Професор</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+
+
+    <title></title>
+
     <link rel="stylesheet" href="../../resources/css/ranking.css">
-
 </head>
-
-
-
-
 <body>
-<div class="container">
-    <div class="navbar">
-        <div class="menu">
-            <h3 class="logo">Професор</h3>
-            <div class="hamburger-menu">
-                <div class="bar"></div>
-            </div>
-        </div>
-    </div>
+<div class="card">
+    <header class="card__header">
+        <img src="../../resources/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg" alt="">
+    </header>
+    <main class="card__body">
+        <h3 class="card__title">
+            Thomas DUBOIS <span> Promo 62 </span>
+        </h3>
+        <p class="card__text">
+            Physique
+        </p>
+    </main>
 
-    <div class="main-container">
-        <div class="main">
-            <section class="mainn">
-                <div class="card">
-                    <div class="card-header">
-                    </div>
-                    <div class="card-body">
-                        <div class="img-holder">
-                        <img src="" alt="">
-                        </div>
-                        <h2 class="name-age">
-                            Thomas DUBOIS <span class="age"> 23
-                        </span>
-                        </h2>
-                        <h3 class="study">Physique</h3>
-                    </div>
-                    <div class="card-footer">
-                        <div class="item">
-                            <h4 class="value">40</h4>
-                            <h5 class="meta">Followers</h5>
-                        </div>
-                        <div class="item">
-                            <h4 class="value">23</h4>
-                            <h5 class="meta">Likes</h5>
-                        </div>
-                        <div class="item">
-                            <h4 class="value">38</h4>
-                            <h5 class="meta">Commentaires</h5>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+    <hr>
 
-        <div class="shadow one"></div>
-        <div class="shadow two"></div>
-    </div>
-
-    <div class="links">
-        <ul>
-            <li>
-                <a href="#" style="--i: 0.05s;" class="myLink">Index</a>
-            </li>
-            <li>
-                <a href="login" style="--i: 0.1s;" class="myLink">Se connecter</a>
-            </li>
-            <li>
-                <a href="#" style="--i: 0.15s;" class="myLink">Ecrire</a>
-            </li>
-            <li>
-                <a href="#" style="--i: 0.2s;" class="myLink">Classement</a>
-            </li>
-            <li>
-                <a href="#" style="--i: 0.25s;" class="myLink">Mon profil</a>
-            </li>
-            <li>
-                <a href="#" style="--i: 0.3s;" class="myLink">Contact</a>
-            </li>
-        </ul>
-    </div>
+    <footer class="card__footer">
+        <p class="stat">
+            <span class="stat__num">1</span>
+            <span class="stat__label">Place</span>
+        </p>
+        <p class="stat">
+            <span class="stat__num">23</span>
+            <span class="stat__label">Commentaires</span>
+        </p>
+        <p class="stat">
+            <span class="stat__num">200</span>
+            <span class="stat__label">Likes</span>
+        </p>
+    </footer>
 </div>
-
-<script>
-    const hamburger_menu = document.querySelector(".hamburger-menu");
-    const container = document.querySelector(".container");
-
-    hamburger_menu.addEventListener("click", () => {
-        container.classList.toggle("active");
-    });
-
-</script>
 </body>
 </html>

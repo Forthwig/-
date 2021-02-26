@@ -22,12 +22,11 @@
             <header>
                 <div class="overlay">
                     <div class="inner">
-                        #if ($email)
                         <h2 class="title">Note tes profs !</h2>
-                        <p>
-                            Vous n'êtes pas anonyme, alors attention au mots employé
-                        </p>
                             #if($role == "[ROLE_STUDENT]")
+                                <p>
+                                    Vous n'êtes pas anonyme, alors attention au mots employé
+                                </p>
                                 <a href="student" style="--i: 0.05s;" class="myLink">
                                     <button class="btn">Mon profil</button>
                                 </a>
@@ -40,7 +39,6 @@
                                     <button class="btn">Se connecter</button>
                                 </a>
                             #end
-                        #end
                     </div>
                 </div>
             </header>
@@ -55,23 +53,13 @@
             <li>
                 <a href="#" style="--i: 0.05s;" class="myLink">Index</a>
             </li>
-            #if ($email)
-                <li>
-                    <a href="logout" style="--i: 0.3s;" class="myLink">Je me deco</a>
-                </li>
-            #else
-                <li>
-                    <a href="login" style="--i: 0.3s;" class="myLink">Je me co rapidos</a>
-                </li>
-
-            #end
             <li>
                 #if($role == "[ROLE_STUDENT]")
                     <a href="student" style="--i: 0.15s;" class="myLink">Ecrire</a>
                 #elseif($role == "[ROLE_TEACHER]")
                     <a href="teacher" style="--i: 0.15s;" class="myLink">Ecrire</a>
                 #else
-                    <a href="login" style="--i: 0.15s;" class="myLink">Ecrire</a>
+                    <a href="logout" style="--i: 0.3s;" class="myLink">Je me deco</a>
                 #end
             </li>
             <li>
@@ -79,18 +67,16 @@
             </li>
             <li>
                 #if($role == "[ROLE_STUDENT]")
-                    <a href="student" style="--i: 0.15s;" class="myLink">Mon profil</a>
+                    <a href="student" style="--i: 0.15s;" class="myLink">Mon Profil</a>
                 #elseif($role == "[ROLE_TEACHER]")
-                    <a href="teacher" style="--i: 0.15s;" class="myLink">Mon profil</a>
+                    <a href="teacher" style="--i: 0.15s;" class="myLink">Mon Profil</a>
                 #else
-                    <a href="login" style="--i: 0.15s;" class="myLink">Mon profil</a>
+                    <a href="login" style="--i: 0.3s;" class="myLink">Mon Profil</a>
                 #end
             </li>
             <li>
                 <a href="#" style="--i: 0.3s;" class="myLink">Contact</a>
             </li>
-
-
         </ul>
     </div>
 </div>

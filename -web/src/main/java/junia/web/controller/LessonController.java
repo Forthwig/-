@@ -45,7 +45,6 @@ public class LessonController implements RestController {
         result.setLanguage(lesson.getLanguage().toString());
         result.setTeachers(lesson.getTeachers().stream().map(Teacher::toString).collect(Collectors.toList()));
         result.setStudents(lesson.getStudents().stream().map(Student::toString).collect(Collectors.toList()));
-        result.setReviews(lesson.getReviews());
         result.setTitle(lesson.getTitle());
         return result;
     }

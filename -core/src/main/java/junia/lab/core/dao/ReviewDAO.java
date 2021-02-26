@@ -13,7 +13,7 @@ public interface ReviewDAO extends JpaRepository<Review, Long> {
     @Query("SELECT DISTINCT r FROM Review r WHERE r.student.id=:id")
     public List<Review> getReviewByStudent(@Param("id") long StudenId);
 
-    @Query("SELECT DISTINCT r FROM Review r LEFT JOIN FETCH r.lesson l LEFT JOIN FETCH l.Teachers t  WHERE t.id=:id")
-    public List<Review> getReviewByLessonByTeacher(@Param("id") long teacherId);
+    @Query("SELECT DISTINCT r FROM Review r LEFT JOIN FETCH r.teacher t  WHERE t.id=:id")
+    public List<Review> getReviewAndTeacher(@Param("id") long teacherId);
 
 }

@@ -1,6 +1,5 @@
 package junia.lab.core.dao;
 
-import junia.lab.core.entity.Student;
 import junia.lab.core.entity.Teacher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

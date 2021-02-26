@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface LessonDAO extends JpaRepository<Lesson, Long> {
 
-    @Query("SELECT DISTINCT l FROM Lesson l LEFT JOIN FETCH l.Teachers LEFT JOIN FETCH l.reviews LEFT JOIN FETCH  l.Students WHERE l.id=:id")
-    Lesson getOneWithTeachersAndReviewsAndStudents(@Param("id") long lessonID);
+    @Query("SELECT DISTINCT l FROM Lesson l LEFT JOIN FETCH l.teachers LEFT JOIN FETCH l.students WHERE l.id=:id")
+    Lesson getOneWithTeachersAndStudents(@Param("id") long lessonID);
 
 }

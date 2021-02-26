@@ -36,7 +36,7 @@
                                             <div class="project__wrapper">
                                                 <div class="project__element project__inform">
                                             <span class="project__inform-name"
-                                            > $review.lesson.title </span
+                                            > $review.teacher.email </span
                                             >
                                                 </div>
                                                 <div class="project__element project__date">

@@ -21,6 +21,6 @@ public class LessonService {
         return lessonDAO.findAll();
     }
 
-    public Lesson findById(long lessonID){ return lessonDAO.getOneWithTeachersAndReviewsAndStudents(lessonID);}
+    public Lesson findById(long lessonID){ return lessonDAO.getOneWithTeachersAndStudents(lessonID);}
 
 }

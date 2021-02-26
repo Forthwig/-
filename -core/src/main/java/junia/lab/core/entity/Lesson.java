@@ -13,14 +13,11 @@ public class Lesson extends GenericEntity implements Comparable<Lesson>  {
 
     @ManyToMany
     @JoinTable(name = "Lesson_teacher", joinColumns = @JoinColumn(name = "lesson_id"), inverseJoinColumns = @JoinColumn(name = "teacher_id"))
-    private Set<Teacher> Teachers;
+    private Set<Teacher> teachers;
 
     @ManyToMany
     @JoinTable(name = "Lesson_student", joinColumns = @JoinColumn(name = "lesson_id"), inverseJoinColumns = @JoinColumn(name = "Student_id"))
-    private Set<Student> Students;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="lesson")
-    private Set<Review> reviews;
+    private Set<Student> students;
 
     public String getTitle() {
         return title;
@@ -39,27 +36,19 @@ public class Lesson extends GenericEntity implements Comparable<Lesson>  {
     }
 
     public Set<Teacher> getTeachers() {
-        return Teachers;
+        return teachers;
     }
 
     public void setTeachers(Set<Teacher> teachers) {
-        Teachers = teachers;
+        teachers = teachers;
     }
 
     public Set<Student> getStudents() {
-        return Students;
+        return students;
     }
 
     public void setStudents(Set<Student> students) {
-        Students = students;
-    }
-
-    public Set<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(Set<Review> reviews) {
-        this.reviews = reviews;
+        this.students = students;
     }
 
     @Override public int compareTo(final Lesson o) {

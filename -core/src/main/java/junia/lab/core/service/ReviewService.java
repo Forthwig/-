@@ -25,9 +25,9 @@ public class ReviewService {
         reviewDAO.deleteById(reviewId);
     }
 
-    public List<Review> getReviewByStudent(long studenId){return reviewDAO.getReviewByStudent(studenId);}
+    public List<Review> getReviewByStudent(long studentId){return reviewDAO.getReviewByStudent(studentId);}
 
-    public List<Review> getReviewByLessonByTeacher(long teacherId){return reviewDAO.getReviewByLessonByTeacher(teacherId);}
+    public List<Review> getReviewAndTeacher(long teacherId){return reviewDAO.getReviewAndTeacher(teacherId);}
 
     public List<Review> getReview(){ return  reviewDAO.findAll();}
 

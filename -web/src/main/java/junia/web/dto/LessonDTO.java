@@ -11,7 +11,6 @@ public class LessonDTO {
     private String language;
     private List<String> Teachers;
     private List<String> Students;
-    private Set<Review> Reviews;
 
     public String getTitle() {
         return title;
@@ -45,11 +44,4 @@ public class LessonDTO {
         Students = students;
     }
 
-    public Set<Review> getReviews() {
-        return Reviews;
-    }
-
-    public void setReviews(Set<Review> reviews) {
-        Reviews = reviews;
-    }
 }

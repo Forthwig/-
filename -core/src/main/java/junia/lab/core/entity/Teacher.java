@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@JsonIgnoreProperties({ "Lessons" }) //eviter les boucle infinie en formats JSON
+@JsonIgnoreProperties({ "reviews" }) //eviter les boucle infinie en formats JSON
 public class Teacher extends GenericEntity implements Comparable<Teacher> {
 
     private String mail;
@@ -17,8 +18,11 @@ public class Teacher extends GenericEntity implements Comparable<Teacher> {
 
     private String enable; //TODO Alaways 1
 
-    @ManyToMany(mappedBy = "Teachers")
-    private List<Lesson> Lessons;
+    @ManyToMany(mappedBy = "teachers")
+    private List<Lesson> lessons;
+
+    @OneToMany(mappedBy = "teacher")
+    private Set<Review> reviews;
 
     public Teacher() {
     }
@@ -40,11 +44,27 @@ public class Teacher extends GenericEntity implements Comparable<Teacher> {
     }
 
     public List<Lesson> getLessons() {
-        return Lessons;
+        return lessons;
     }
 
     public void setLessons(List<Lesson> lessons) {
-        Lessons = lessons;
+        this.lessons = lessons;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
     }
 
     @Override

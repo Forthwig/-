@@ -20,7 +20,6 @@ public class Review extends GenericEntity implements Comparable<Review> {
     private Student student;
 
     @ManyToOne
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //We need this annotation for the deserialization only
     @JoinColumn(name = "teacher_id", referencedColumnName = "id")
     private Teacher teacher;
 

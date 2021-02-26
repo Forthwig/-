@@ -30,7 +30,7 @@ public class ProfilController implements RestController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Student student = studentService.getByEmail(user.getUsername());
         //modelMap.put("nb",reviewService.getReviewByStudent(student.getId()).size());
-        modelMap.put("reviews",reviewService.getReview());
+        modelMap.put("reviews",reviewService.getReviewByStudent(student.getId()));
         modelMap.addAttribute("mail", student.getEmail());//
         return "profil";
     }

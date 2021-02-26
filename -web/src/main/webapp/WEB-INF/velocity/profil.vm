@@ -33,12 +33,12 @@
                                         <a href="#" class="project__link focus--box-shadow">
                                             <div class="project__wrapper">
                                                 <div class="project__element project__inform">
-                                            <span class="project__inform-name"
-                                            > $review.studentId </span
-                                            >
+                                            <span class="project__inform-name">
+                                                $review.student.email
+                                            </span>
                                                 </div>
                                                 <div class="project__element project__date">
-                                                    <p>$review.lesson</p>
+                                                    <p>$review.lesson.title</p>
                                                 </div>
                                                 <div class="project__element project__status">
                                                     <span class="status status--published">$review.score</span>

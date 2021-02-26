@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ReviewDAO extends JpaRepository<Review, Long> {
 
-    @Query("SELECT DISTINCT r FROM Review r WHERE r.StudenId=:id")
+    @Query("SELECT DISTINCT r FROM Review r WHERE r.student.id=:id")
     public List<Review> getReviewByStudent(@Param("id") long StudenId);
 
     @Query("SELECT DISTINCT r FROM Review r LEFT JOIN FETCH r.lesson l LEFT JOIN FETCH l.Teachers t  WHERE t.id=:id")

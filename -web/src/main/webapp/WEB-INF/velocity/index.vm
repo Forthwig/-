@@ -22,9 +22,10 @@
             <header>
                 <div class="overlay">
                     <div class="inner">
+                        #if ($email)
                         <h2 class="title">Note tes profs !</h2>
                         <p>
-                            La première plateforme ISEN permettant de noter les différents profs et intervenants.
+                            Vous n'êtes pas anonyme, alors attention au mots employé
                         </p>
                             #if($role == "[ROLE_STUDENT]")
                                 <a href="student" style="--i: 0.05s;" class="myLink">
@@ -39,6 +40,7 @@
                                     <button class="btn">Se connecter</button>
                                 </a>
                             #end
+                        #end
                     </div>
                 </div>
             </header>

@@ -36,7 +36,7 @@
                                             <div class="project__wrapper">
                                                 <div class="project__element project__inform">
                                             <span class="project__inform-name"
-                                            > $review.teacher.email </span
+                                            > $review.title </span
                                             >
                                                 </div>
                                                 <div class="project__element project__date">
@@ -60,19 +60,18 @@
                             </header>
                             <ul class="project">
                                 <li class="project__item">
-                                    <a href="#" class="project__link focus--box-shadow">
-                                        <form action="">
-                                            <input type="text" placeholder="Titre" />
-                                            <select name="promo" id="teacher-selected" >
+                                        <form action="student/add" method="POST" class="project__link focus--box-shadow">
+                                            <h5>$errorMessage</h5>
+                                            <input name="title" type="text" placeholder="Titre" />
+                                            <select name="emailteacher" id="teacher-selected" >
                                                 #foreach($teacher in $teachers)
-                                                    <option value="">$teacher.email</option>
+                                                    <option value=$teacher.email>$teacher.email</option>
                                                 #end
                                             </select>
-                                            <textarea type="text" class="input-field" placeholder="Ton commentaire">
+                                            <textarea name="text" type="text" class="input-field" placeholder="Ton commentaire">
               </textarea>
                                             <button class="btn bnt">Envoyer</button>
                                         </form>
-                                    </a>
                                 </li>
                             </ul>
 
@@ -90,7 +89,7 @@
 
                                     <img
                                             class="profile-main__photo"
-                                            src="./img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
+                                            src="resources/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg"
                                             alt="Profile photo"
                                     />
                                 </button>

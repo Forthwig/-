@@ -14,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 
@@ -31,14 +32,17 @@ public class ProfilController implements RestController {
     }
 
     @RequestMapping(value = "student", method = RequestMethod.GET)
-    public String getStudentPage( ModelMap modelMap){
+    public String getStudentPage(@RequestParam(value = "error", required = false) String error, ModelMap modelMap){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Student student = studentService.getByEmail(user.getUsername());
         modelMap.put("reviews",reviewService.getReviewByStudent(student.getId()));
         modelMap.addAttribute("student", student);
-        System.out.println(student.getSurnom());
         modelMap.addAttribute("teachers",teacherService.findAll());
         modelMap.addAttribute("promos", Promo.values());
+        String errorMessage = "";
+        if(error != null)
+            errorMessage = "error dans le titre ou dans le text";
+        modelMap.addAttribute("errorMessage", errorMessage);
         return "profil";
     }
 
@@ -61,18 +65,29 @@ public class ProfilController implements RestController {
         return "redirect:profil";
     }
 
-    @RequestMapping(value = "student/add", method = RequestMethod.GET)
+    @RequestMapping(value = "student/add", method = RequestMethod.POST)
     public String addReview(String title,String emailteacher,String text,ModelMap modelMap){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Student student = studentService.getByEmail(user.getUsername());
-        Review review = new Review();
-        review.setText(text);
-        review.setTitle(title);
-        review.setStudent(student);
-        review.setTeacher(teacherService.getByEmail(emailteacher));
-        review.setDateOfReview(new Date());
-        this.reviewService.save(review);
-        return "redirect:profil";
+        System.out.println(student.getSurnom());
+        System.out.println(title);
+        System.out.println(teacherService.getByEmail(emailteacher));
+        System.out.println(text);
+        System.out.println(new Date());
+        if(title != null && emailteacher != null && text != null){
+            Review review = new Review();
+            review.setText(text);
+            review.setTitle(title);
+            review.setStudent(student);
+            review.setTeacher(teacherService.getByEmail(emailteacher));
+            review.setDateOfReview(new Date());
+            this.reviewService.save(review);
+            modelMap.remove("error");
+        }
+        else{
+            modelMap.addAttribute("error", "true");
+        }
+        return "redirect:../student";
     }
 
 }

@@ -821,7 +821,8 @@ button {
 }
 
 .project__status {
-    width: 12%;
+    width: 50%;
+    overflow: hidden;
 }
 
 .project__setting {

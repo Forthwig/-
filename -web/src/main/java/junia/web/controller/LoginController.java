@@ -20,12 +20,12 @@ public class LoginController implements RestController {
     public String loginPage(@RequestParam(value = "error", required = false) String error,
                             @RequestParam(value = "logout", required = false) String logout,
                             ModelMap modelMap) {
-        String errorMessge = "";
+        String errorMessage = "";
         if(error != null)
-            errorMessge = "Username or Password is incorrect !!";
+            errorMessage = "Username or Password is incorrect !!";
         if(logout != null)
-            errorMessge = "You have been successfully logged out !!";
-        modelMap.addAttribute("errorMessge", errorMessge);
+            errorMessage = "You have been successfully logged out !!";
+        modelMap.addAttribute("errorMessage", errorMessage);
         return "login";
     }
 

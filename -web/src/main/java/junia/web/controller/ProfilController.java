@@ -54,15 +54,18 @@ public class ProfilController implements RestController {
         return "profil";
     }
 
-    @RequestMapping(value = "student/update", method = RequestMethod.GET)
+    @RequestMapping(value = "student/update", method = RequestMethod.POST)
     public String setSurnomAndPromoPage(String surnom,String promo,String image,ModelMap modelMap){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Student student = studentService.getByEmail(user.getUsername());
-        student.setSurnom(surnom);
-        student.setPromo(Promo.valueOf(promo));
-        student.setImage(image);
+        if(!surnom.equals(""))
+            student.setSurnom(surnom);
+        if(!promo.equals(""))
+            student.setPromo(Promo.valueOf(promo));
+        if(image != null)
+            student.setImage(image);
         this.studentService.save(student);
-        return "redirect:profil";
+        return "redirect:../student";
     }
 
     @RequestMapping(value = "student/add", method = RequestMethod.POST)

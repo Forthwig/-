@@ -1,45 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
-
-
-    <title></title>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Професор</title>
+    <link rel="stylesheet" href="../../resources/css/rankdisplay.css">
     <link rel="stylesheet" href="../../resources/css/ranking.css">
+
 </head>
+
 <body>
-<div class="card">
-    <header class="card__header">
-        <img src="../../resources/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg" alt="">
-    </header>
-    <main class="card__body">
-        <h3 class="card__title">
-            Thomas DUBOIS <span> Promo 62 </span>
-        </h3>
-        <p class="card__text">
-            Physique
-        </p>
-    </main>
+<div class="container">
+    <div class="navbar">
+        <div class="menu">
+            <h3 class="logo">Професор</h3>
+            <div class="hamburger-menu">
+                <div class="bar"></div>
+            </div>
+        </div>
+    </div>
 
-    <hr>
+    <div class="main-container">
+        <div class="main">
+            <header>
+                <div class="grid-container">
+                    #foreach ($teacher in $teacher-ddb)
+                    <div class="card">
+                        <div class="card__header">
+                            <img src="../../resources/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg" alt="">
+                        </div>
+                        <main class="card__body">
+                            <h3 class="card__title">
+                                $teachername <span> $teacherpromo ? </span>
+                            </h3>
+                            <p class="card__text">
+                                $teacher class
+                            </p>
+                        </main>
 
-    <footer class="card__footer">
-        <p class="stat">
-            <span class="stat__num">1</span>
-            <span class="stat__label">Place</span>
-        </p>
-        <p class="stat">
-            <span class="stat__num">23</span>
-            <span class="stat__label">Commentaires</span>
-        </p>
-        <p class="stat">
-            <span class="stat__num">200</span>
-            <span class="stat__label">Likes</span>
-        </p>
-    </footer>
+                        <hr>
+
+                        <footer class="card__footer">
+                            <p class="stat">
+                                <span class="stat__num">$rank</span>
+                                <span class="stat__label">Place</span>
+                            </p>
+                            <p class="stat">
+                                <span class="stat__num">$nb de com </span>
+                                <span class="stat__label">Commentaires</span>
+                            </p>
+                            <p class="stat">
+                                <span class="stat__num">$Jsp</span>
+                                <span class="stat__label">Likes</span>
+                            </p>
+                        </footer>
+                    </div>
+                    #end
+
+
+                </div>
+            </header>
+
+        </div>
+
+        <div class="shadow one"></div>
+        <div class="shadow two"></div>
+    </div>
+
+    <div class="links">
+        <ul>
+            <li>
+                <a href="#" style="--i: 0.05s;" class="myLink">Index</a>
+            </li>
+            #if ($email)
+            <li>
+                <a href="logout" style="--i: 0.3s;" class="myLink">Je me deco</a>
+            </li>
+            #else
+            <li>
+                <a href="login" style="--i: 0.3s;" class="myLink">Je me co rapidos</a>
+            </li>
+
+            #end
+            <li>
+                <a href="profil" style="--i: 0.15s;" class="myLink">Ecrire</a>
+            </li>
+            <li>
+                <a href="#" style="--i: 0.2s;" class="myLink">Classement</a>
+            </li>
+            <li>
+                <a href="profil" style="--i: 0.25s;" class="myLink">Mon profil</a>
+            </li>
+            <li>
+                <a href="#" style="--i: 0.3s;" class="myLink">Contact</a>
+            </li>
+
+
+        </ul>
+    </div>
 </div>
+
+<script src="../../resources/js/script.js"></script>
+<script src="../../resources/js/log.js"></script>
+
+
 </body>
 </html>

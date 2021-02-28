@@ -3,8 +3,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Професор</title>
-    <link href="../../resources/css/rankdisplay.css" rel="stylesheet">
-    <link href="../../resources/css/ranking.css" rel="stylesheet">
+    <link href="resources/css/rankdisplay.css" rel="stylesheet">
+    <link href="resources/css/ranking.css" rel="stylesheet">
 
 </head>
 
@@ -14,7 +14,7 @@
         <div class="menu">
             <h3 class="logo">Професор</h3>
             <div class="hamburger-menu">
-                <div class="bar"></div>
+                <div class="bar" onclick="myFunction()"></div>
             </div>
         </div>
     </div>
@@ -99,8 +99,8 @@
     </div>
 </div>
 
-<script src="../../resources/js/script.js"></script>
-<script src="../../resources/js/log.js"></script>
+<script src="resources/js/script.js"></script>
+<script src="resources/js/log.js"></script>
 
 
 </body>

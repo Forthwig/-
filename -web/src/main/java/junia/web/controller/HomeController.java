@@ -1,6 +1,9 @@
 package junia.web.controller;
 
+import junia.lab.core.service.LessonService;
 import junia.lab.core.service.ReviewService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -12,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController implements RestController {
 
-    private ReviewService reviewService;
 
-    public HomeController(ReviewService reviewService) {
-        this.reviewService = reviewService;
+    private static final Logger logger =  LoggerFactory.getLogger(LessonService.class);
+
+    public HomeController() {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)

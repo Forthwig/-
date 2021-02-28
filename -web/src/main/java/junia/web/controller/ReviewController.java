@@ -3,8 +3,11 @@ package junia.web.controller;
 import junia.lab.core.entity.Review;
 import junia.lab.core.service.ReviewService;
 import junia.web.controller.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -17,7 +20,7 @@ public class ReviewController implements RestController {
 
     private static ReviewController instance;
 
-    private ReviewController getInstance(){
+    public static ReviewController getInstance(){
         return instance;
     }
 
@@ -25,6 +28,7 @@ public class ReviewController implements RestController {
 
     public ReviewController(ReviewService reviewService) {
         this.reviewService = reviewService;
+        instance = this;
     }
 
     @POST

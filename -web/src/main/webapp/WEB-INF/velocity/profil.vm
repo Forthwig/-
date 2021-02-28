@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Професор</title>
     <link rel="stylesheet" href="resources/css/profil.css" />
+    <script src="resources/js/jquery.js"></script>
 </head>
 
 <body>
@@ -145,7 +146,7 @@
                 <a href="#" style="--i: 0.15s;" class="myLink">Ecrire</a>
             </li>
             <li>
-                <a href="#" style="--i: 0.2s;" class="myLink">Classement</a>
+                <a href="rank" style="--i: 0.2s;" class="myLink">Classement</a>
             </li>
             <li>
                 <a href="#" style="--i: 0.25s;" class="myLink">Mon profil</a>
@@ -156,9 +157,7 @@
         </ul>
     </div>
 </div>
-
 <script src="resources/js/script.js"></script>
 <script src="resources/js/log.js"></script>
-<script src="resources/js/jquery.js"></script>
 </body>
 </html>

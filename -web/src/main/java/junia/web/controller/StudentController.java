@@ -1,19 +1,15 @@
 package junia.web.controller;
 
 import junia.lab.core.entity.Student;
-import junia.lab.core.entity.Teacher;
 import junia.lab.core.service.StudentService;
 import junia.lab.core.service.TeacherService;
-import junia.web.controller.RestController;
 import junia.web.dto.StudentDTO;
-import junia.web.dto.TeacherDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Map;
@@ -37,6 +33,7 @@ public class StudentController implements RestController {
 
     public StudentController(StudentService reviewService) {
         this.studentService = reviewService;
+        instance = this;
     }
 
     /** API **/

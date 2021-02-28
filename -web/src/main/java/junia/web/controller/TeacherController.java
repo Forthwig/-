@@ -5,13 +5,19 @@ import junia.lab.core.service.TeacherService;
 import junia.web.controller.RestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import junia.web.dto.TeacherDTO;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.annotation.SessionScope;
 
+import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Map;
@@ -31,6 +37,7 @@ public class TeacherController implements RestController {
 
     private TeacherController(TeacherService reviewService) {
         this.teacherService = reviewService;
+        instance = this;
     }
 
     /** API **/
@@ -66,6 +73,10 @@ public class TeacherController implements RestController {
 
     public Boolean contais(String mail){
         return teacherService.findAll().stream().anyMatch(teacher -> teacher.getEmail().contains(mail));
+    }
+
+    public Teacher getTeacherByMail(String mail){
+        return teacherService.getByEmail(mail);
     }
 
     public static TeacherController getInstance(){

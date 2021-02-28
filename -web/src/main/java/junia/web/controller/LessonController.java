@@ -25,7 +25,13 @@ public class LessonController implements RestController {
 
     private LessonService lessonService;
 
-    private static final Logger logger =  LoggerFactory.getLogger(LessonService.class);
+    private static LessonController instance;
+
+    public static LessonController getInstance(){
+        return instance;
+    }
+
+    private static final Logger logger =  LoggerFactory.getLogger(LessonController.class);
 
     public LessonController(LessonService lessonService) {
         this.lessonService = lessonService;

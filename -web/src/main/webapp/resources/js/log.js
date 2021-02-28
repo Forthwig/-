@@ -1,6 +1,7 @@
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const containere = document.getElementById('containere');
+const container = document.getElementById('container');
 var menuCSSChange = document.getElementById('changecss');
 
 
@@ -15,5 +16,5 @@ signInButton.addEventListener('click', () => {
 
 function myFunction() {
 
-    $('.container').css('background-color', '#485461');
+    container.css('background-color', '#485461');
     }

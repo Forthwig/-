@@ -29,6 +29,7 @@ CREATE TABLE `student` (
                              `image` varchar(255) DEFAULT NULL,
                              `mail` varchar(255) DEFAULT NULL,
                              `password` varchar(255) DEFAULT NULL,
+                             `promo` varchar(255) DEFAULT NULL,
                              `enable` int(1) DEFAULT NULL,
                              `role` varchar(255) DEFAULT NULL,
                              PRIMARY KEY (`id`)
@@ -41,8 +42,8 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (1,NULL,'matthieu.desmarescaux@isen.yncrea.fr','matthieu',1,'ROLE_STUDENT'),
-                             (2,NULL,'thomas.dubois@isen.yncrea.fr','thomas',1,'ROLE_STUDENT');
+INSERT INTO `student` VALUES (1,NULL,'matthieu.desmarescaux@isen.yncrea.fr','matthieu',null,1,'ROLE_STUDENT'),
+                             (2,NULL,'thomas.dubois@isen.yncrea.fr','thomas',null,1,'ROLE_STUDENT');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,7 +124,6 @@ CREATE TABLE `review` (
                           `id` bigint(20) NOT NULL,
                           `dateOfReview` datetime DEFAULT NULL,
                           `text` varchar(255) NOT NULL,
-                          `promo` varchar(255) NOT NULL,
                           `student_id` int(11) NOT NULL,
                           `lesson_id` bigint(20) DEFAULT NULL,
                           PRIMARY KEY (`id`)
@@ -136,9 +136,9 @@ CREATE TABLE `review` (
 
 LOCK TABLES `review` WRITE;
 /*!40000 ALTER TABLE `review` DISABLE KEYS */;
-INSERT INTO `review` VALUES (245,'2019-10-06 18:38:48','tu pu','PROMO62',1,169),
-                            (266,'2019-10-06 19:00:33','tu pu','PROMO62',1,169),
-                            (282,'2019-10-06 19:03:17','tu pu','PROMO62',1,167);
+INSERT INTO `review` VALUES (245,'2019-10-06 18:38:48','tu pu',1,169),
+                            (266,'2019-10-06 19:00:33','tu pu',1,169),
+                            (282,'2019-10-06 19:03:17','tu pu',1,167);
 /*!40000 ALTER TABLE `review` ENABLE KEYS */;
 UNLOCK TABLES;
 

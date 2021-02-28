@@ -29,6 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         authManagerBuilder.jdbcAuthentication().dataSource(dataSource)
                     .usersByUsernameQuery("SELECT mail,password,enable FROM student WHERE mail=?")
                 .authoritiesByUsernameQuery("SELECT mail,role FROM student WHERE mail=?");
+        //TODO mettre aussi les teacher
     }
 
     @Bean
@@ -39,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/home", "/resources/**").permitAll()
+                .antMatchers("/", "/home", "/resources/**","/rank").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .authorizeRequests()

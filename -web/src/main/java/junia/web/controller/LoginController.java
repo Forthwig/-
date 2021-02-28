@@ -43,7 +43,7 @@ public class LoginController implements RestController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "login/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/login/add", method = RequestMethod.POST)
     public String addReview(String username,String password,ModelMap modelMap){
         if(username.isEmpty()) {
             modelMap.addAttribute("error", "true");

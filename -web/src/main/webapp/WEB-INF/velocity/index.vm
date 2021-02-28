@@ -63,7 +63,7 @@
                 #end
             </li>
             <li>
-                <a href="#" style="--i: 0.2s;" class="myLink">Classement</a>
+                <a href="rank" style="--i: 0.2s;" class="myLink">Classement</a>
             </li>
             <li>
                 #if($role == "[ROLE_STUDENT]")

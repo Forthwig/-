@@ -18,12 +18,14 @@ import java.util.Date;
 public class ProfilController implements RestController {
 
 
+
     public ProfilController() {
     }
 
     @RequestMapping(value = "student", method = RequestMethod.GET)
     public String getStudentPage(@RequestParam(value = "error", required = false) String error, ModelMap modelMap){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(StudentController.getInstance());
         Student student = StudentController.getInstance().getStudentByName(user.getUsername());
         modelMap.put("reviews",ReviewController.getInstance().getReviewByStudent(student.getId()));
         modelMap.addAttribute("student", student);
@@ -39,7 +41,7 @@ public class ProfilController implements RestController {
     @RequestMapping(value = "teacher", method = RequestMethod.GET)
     public String getTeacherPage( ModelMap modelMap){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Teacher teacher = teacherService.getByEmail(user.getUsername());
+        Teacher teacher = TeacherController.getInstance().getTeacherByMail(user.getUsername());
         modelMap.addAttribute("mail", teacher.getEmail());//
         return "profil";
     }
@@ -47,24 +49,24 @@ public class ProfilController implements RestController {
     @RequestMapping(value = "student/update", method = RequestMethod.POST)
     public String setSurnomAndPromoPage(String surnom,String promo,String image,ModelMap modelMap){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Student student = studentService.getByEmail(user.getUsername());
+        Student student = StudentController.getInstance().getStudentByName(user.getUsername());
         if(!surnom.equals(""))
             student.setSurnom(surnom);
         if(!promo.equals(""))
             student.setPromo(Promo.valueOf(promo));
         if(image != null)
             student.setImage(image);
-        this.studentService.save(student);
+        StudentController.getInstance().save(student);
         return "redirect:../student";
     }
 
     @RequestMapping(value = "student/add", method = RequestMethod.POST)
     public String addReview(String title,String emailteacher,String text,ModelMap modelMap){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Student student = studentService.getByEmail(user.getUsername());
+        Student student = StudentController.getInstance().getStudentByName(user.getUsername());
         System.out.println(student.getSurnom());
         System.out.println(title);
-        System.out.println(teacherService.getByEmail(emailteacher));
+        System.out.println(TeacherController.getInstance().getTeacherByMail(emailteacher));
         System.out.println(text);
         System.out.println(new Date());
         if(title != null && emailteacher != null && text != null){
@@ -72,9 +74,9 @@ public class ProfilController implements RestController {
             review.setText(text);
             review.setTitle(title);
             review.setStudent(student);
-            review.setTeacher(teacherService.getByEmail(emailteacher));
+            review.setTeacher(TeacherController.getInstance().getTeacherByMail(emailteacher));
             review.setDateOfReview(new Date());
-            this.reviewService.save(review);
+            ReviewController.getInstance().saveReview(review);
             modelMap.remove("error");
         }
         else{

@@ -1,5 +1,9 @@
 package junia.web.controller;
 
+import junia.lab.core.entity.Review;
+import junia.lab.core.entity.Student;
+import junia.lab.core.entity.Teacher;
+import junia.lab.core.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 
 @Controller
 public class LoginController implements RestController {
@@ -38,6 +43,35 @@ public class LoginController implements RestController {
         return "redirect:/";
     }
 
-    //User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    //model.addAttribute("fullname", user.getFirstName() + " " + user.getLastName());
+    @RequestMapping(value = "login/add", method = RequestMethod.POST)
+    public String addReview(String username,String password,ModelMap modelMap){
+        if(username.isEmpty()) {
+            modelMap.addAttribute("error", "true");
+            return "redirect:/";
+        }
+
+        if(TeacherController.getInstance().contais(username)){
+            modelMap.addAttribute("error", "true");
+            return "redirect:/";
+        }
+
+        if(username.contains("@isen.yncrea.fr")){
+            Student student = new Student();
+            student.setEmail(username);
+            student.setPassword(password);
+            StudentController.getInstance().save(student);
+            return "redirect:../student";
+        }
+        else if(username.contains("@yncrea.fr")){
+            Teacher teacher = new Teacher();
+            teacher.setEmail(username);
+            teacher.setPassword(password);
+            TeacherController.getInstance().save(teacher);
+            return "redirect:../teacher";
+        }
+
+        modelMap.addAttribute("error", "true");
+        return "redirect:../student";
+    }
+
 }

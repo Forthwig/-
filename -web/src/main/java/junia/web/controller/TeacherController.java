@@ -23,11 +23,13 @@ import java.util.stream.Collectors;
 @Produces(MediaType.APPLICATION_JSON)
 public class TeacherController implements RestController {
 
+    private static TeacherController instance;
+
     private TeacherService teacherService;
 
     private static final Logger logger =  LoggerFactory.getLogger(TeacherService.class);
 
-    public TeacherController(TeacherService reviewService) {
+    private TeacherController(TeacherService reviewService) {
         this.teacherService = reviewService;
     }
 
@@ -35,8 +37,8 @@ public class TeacherController implements RestController {
 
     @POST
     @Path("/add")
-    public void saveReview(Teacher review){
-        teacherService.save(review);
+    public void save(Teacher teacher){
+        teacherService.save(teacher);
     }
 
     @DELETE
@@ -60,7 +62,14 @@ public class TeacherController implements RestController {
         result.setEmail(teacher.getEmail());
         result.setPassword(teacher.getPassword());
         return result;
+    }
 
+    public Boolean contais(String mail){
+        return teacherService.findAll().stream().anyMatch(teacher -> teacher.getEmail().contains(mail));
+    }
+
+    public static TeacherController getInstance(){
+        return instance;
     }
 
 

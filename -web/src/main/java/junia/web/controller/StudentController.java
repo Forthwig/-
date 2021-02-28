@@ -25,6 +25,12 @@ import java.util.stream.Collectors;
 @Produces(MediaType.APPLICATION_JSON)
 public class StudentController implements RestController {
 
+    private static StudentController instance;
+
+    public static StudentController getInstance(){
+        return instance;
+    }
+
     private StudentService studentService;
 
     private static final Logger logger =  LoggerFactory.getLogger(TeacherService.class);
@@ -37,8 +43,8 @@ public class StudentController implements RestController {
 
     @POST
     @Path("/add")
-    public void saveReview(Student review){
-        studentService.save(review);
+    public void save(Student student){
+        studentService.save(student);
     }
 
     @DELETE
@@ -64,4 +70,9 @@ public class StudentController implements RestController {
         return result;
 
     }
+
+    public Student getStudentByName(String mail){
+        return studentService.getByEmail(mail);
+    }
+
 }

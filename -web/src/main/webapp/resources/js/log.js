@@ -5,11 +5,12 @@ var menuCSSChange = document.getElementById('changecss');
 
 
 signUpButton.addEventListener('click', () => {
-    $('.containere').classList.add("right-panel-active");
+    console.log("add")
+    containere.classList.add("right-panel-active");
 });
 
 signInButton.addEventListener('click', () => {
-    $('.containere').classList.remove("right-panel-active");
+    containere.classList.remove("right-panel-active");
 });
 
 function myFunction() {

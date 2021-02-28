@@ -25,11 +25,8 @@ public class ProfilController implements RestController {
     @RequestMapping(value = "student", method = RequestMethod.GET)
     public String getStudentPage(@RequestParam(value = "error", required = false) String error, ModelMap modelMap){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(StudentController.getInstance());
-        Student student = StudentController.getInstance().getStudentByName(user.getUsername());
-        modelMap.put("reviews",ReviewController.getInstance().getReviewByStudent(student.getId()));
-        modelMap.addAttribute("student", student);
-        modelMap.addAttribute("teachers",TeacherController.getInstance().listTeacher());
+        modelMap.addAttribute("student", StudentController.getInstance().getStudentByName(user.getUsername()));
+        modelMap.addAttribute("teachers",TeacherController.getInstance().getList());
         modelMap.addAttribute("promos", Promo.values());
         String errorMessage = "";
         if(error != null)

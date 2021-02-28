@@ -1,22 +1,16 @@
 package junia.web.controller;
 
-import junia.lab.core.entity.Review;
 import junia.lab.core.entity.Student;
 import junia.lab.core.entity.Teacher;
-import junia.lab.core.service.TeacherService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
 
 @Controller
 public class LoginController implements RestController {
@@ -50,7 +44,7 @@ public class LoginController implements RestController {
             return "redirect:/";
         }
 
-        if(TeacherController.getInstance().contais(username)){
+        if(TeacherController.getInstance().contains(username)){
             modelMap.addAttribute("error", "true");
             return "redirect:/";
         }

@@ -1,11 +1,9 @@
 package junia.web.controller;
 
 import junia.lab.core.entity.Lesson;
-import junia.lab.core.entity.Review;
 import junia.lab.core.entity.Student;
 import junia.lab.core.entity.Teacher;
 import junia.lab.core.service.LessonService;
-import junia.web.controller.RestController;
 import junia.web.dto.LessonDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -23,9 +22,8 @@ import java.util.stream.Collectors;
 @Produces(MediaType.APPLICATION_JSON)
 public class LessonController implements RestController {
 
-    private LessonService lessonService;
-
     private static LessonController instance;
+    private LessonService lessonService;
 
     public static LessonController getInstance(){
         return instance;
@@ -34,8 +32,17 @@ public class LessonController implements RestController {
     private static final Logger logger =  LoggerFactory.getLogger(LessonController.class);
 
     public LessonController(LessonService lessonService) {
+        logger.info("Initialisation LessonController");
         this.lessonService = lessonService;
+        instance = this;
     }
+    /** Web **/
+
+    public List<Lesson> getList(){
+        return lessonService.findAll();
+    }
+
+    /** API **/
 
     @GET
     @Path("")

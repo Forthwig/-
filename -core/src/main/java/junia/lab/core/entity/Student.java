@@ -1,6 +1,7 @@
 package junia.lab.core.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Student extends GenericEntity implements Comparable<Student> {
@@ -19,6 +20,9 @@ public class Student extends GenericEntity implements Comparable<Student> {
     private String role; //TODO Alaways Student
 
     private String enable; //TODO Alaways 1
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
+    private List<Review> reviews;
 
     public Student() {
     }
@@ -69,6 +73,14 @@ public class Student extends GenericEntity implements Comparable<Student> {
 
     public void setEmail(String email) {
         this.mail = email;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 
     @Override

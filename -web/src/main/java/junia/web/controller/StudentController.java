@@ -2,14 +2,11 @@ package junia.web.controller;
 
 import junia.lab.core.entity.Student;
 import junia.lab.core.service.StudentService;
-import junia.lab.core.service.TeacherService;
 import junia.web.dto.StudentDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Map;
@@ -22,18 +19,24 @@ import java.util.stream.Collectors;
 public class StudentController implements RestController {
 
     private static StudentController instance;
+    private StudentService studentService;
 
     public static StudentController getInstance(){
         return instance;
     }
 
-    private StudentService studentService;
-
-    private static final Logger logger =  LoggerFactory.getLogger(TeacherService.class);
+    private static final Logger logger =  LoggerFactory.getLogger(StudentController.class);
 
     public StudentController(StudentService reviewService) {
+        logger.info("initialisation StudentController");
         this.studentService = reviewService;
         instance = this;
+    }
+
+    /** Web **/
+
+    public Student getStudentByName(String mail){
+        return studentService.getByEmail(mail);
     }
 
     /** API **/
@@ -67,9 +70,4 @@ public class StudentController implements RestController {
         return result;
 
     }
-
-    public Student getStudentByName(String mail){
-        return studentService.getByEmail(mail);
-    }
-
 }

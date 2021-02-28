@@ -2,15 +2,12 @@ package junia.web.controller;
 
 import junia.lab.core.entity.Review;
 import junia.lab.core.service.ReviewService;
-import junia.web.controller.RestController;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 
-import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 @Controller
 @Path("/reviews")
@@ -19,17 +16,22 @@ import java.util.List;
 public class ReviewController implements RestController {
 
     private static ReviewController instance;
+    private ReviewService reviewService;
 
     public static ReviewController getInstance(){
         return instance;
     }
 
-    private ReviewService reviewService;
+    private static final Logger logger =  LoggerFactory.getLogger(ReviewController.class);
 
     public ReviewController(ReviewService reviewService) {
+        logger.info("Initialisation ReviewController");
         this.reviewService = reviewService;
         instance = this;
     }
+    /** Web **/
+
+    /** API **/
 
     @POST
     @Path("")
@@ -41,10 +43,6 @@ public class ReviewController implements RestController {
     @Path("/{reviewId}")
     public void deleteReviewById(@PathParam("reviewId") long reviewId){
         reviewService.deleteReviewById(reviewId);
-    }
-
-    public List<Review> getReviewByStudent(Long studenId){
-        return reviewService.getReviewByStudent(studenId);
     }
 
 }

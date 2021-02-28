@@ -23,17 +23,19 @@
         <div class="main">
             <header>
                 <div class="grid-container">
-                    #foreach ($teacher in $teacher-ddb)
+                    #foreach ($teacher in $teachers)
                         <div class="card">
                         <div class="card__header">
                             <img src="../../resources/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg" alt="">
                         </div>
                         <main class="card__body">
                             <h3 class="card__title">
-                                $teachername <span> $teacherpromo ? </span>
+                                $teacher.mail
                             </h3>
                             <p class="card__text">
-                                $teacher class
+                                #foreach($lesson in $teacher.lessons)
+                                    $lesson.title
+                                #end
                             </p>
                         </main>
 

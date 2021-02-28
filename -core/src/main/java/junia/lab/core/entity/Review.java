@@ -31,9 +31,13 @@ public class Review extends GenericEntity implements Comparable<Review> {
         return dateOfReview;
     }
 
-    public String getTitle() { return title; }
+    public String getTitle() {
+        return title;
+    }
 
-    public void setTitle(String title) { this.title = title; }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public Student getStudent() { return student; }
 

@@ -27,6 +27,7 @@ DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student` (
                              `id` bigint(20) NOT NULL,
                              `image` varchar(255) DEFAULT NULL,
+                             `surnom` varchar(255) DEFAULT NULL,
                              `mail` varchar(255) DEFAULT NULL,
                              `password` varchar(255) DEFAULT NULL,
                              `promo` varchar(255) DEFAULT NULL,
@@ -42,8 +43,8 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (1,NULL,'matthieu.desmarescaux@isen.yncrea.fr','matthieu',null,1,'ROLE_STUDENT'),
-                             (2,NULL,'thomas.dubois@isen.yncrea.fr','thomas',null,1,'ROLE_STUDENT');
+INSERT INTO `student` VALUES (1,NULL,'MatD3mons','matthieu.desmarescaux@isen.yncrea.fr','matthieu',null,1,'ROLE_STUDENT'),
+                             (2,NULL,NULL,'thomas.dubois@isen.yncrea.fr','thomas',null,1,'ROLE_STUDENT');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,7 +57,6 @@ DROP TABLE IF EXISTS `teacher`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `teacher` (
                            `id` bigint(20) NOT NULL,
-                           `surnom` varchar DEFAULT NULL,
                            `mail` varchar(255) DEFAULT NULL,
                            `password` varchar(255) DEFAULT NULL,
                            `enable` int(1) DEFAULT NULL,
@@ -71,8 +71,8 @@ CREATE TABLE `teacher` (
 
 LOCK TABLES `teacher` WRITE;
 /*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
-INSERT INTO `teacher` VALUES (1,'MatD3mons','matthieu.desmarescaux@yncrea.fr','matthieu',1,'ROLE_TEACHER'),
-                             (2,NULL,'thomas.dubois@yncrea.fr','thomas',1,'ROLE_TEACHER');
+INSERT INTO `teacher` VALUES (1,'matthieu.desmarescaux@yncrea.fr','matthieu',1,'ROLE_TEACHER'),
+                             (2,'thomas.dubois@yncrea.fr','thomas',1,'ROLE_TEACHER');
 /*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,10 +122,11 @@ DROP TABLE IF EXISTS `review`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `review` (
                           `id` bigint(20) NOT NULL,
+                          `title` varchar(255) NOT NULL,
                           `dateOfReview` datetime DEFAULT NULL,
                           `text` varchar(255) NOT NULL,
                           `student_id` int(11) NOT NULL,
-                          `lesson_id` bigint(20) DEFAULT NULL,
+                          `teacher_id` bigint(20) DEFAULT NULL,
                           PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -136,9 +137,9 @@ CREATE TABLE `review` (
 
 LOCK TABLES `review` WRITE;
 /*!40000 ALTER TABLE `review` DISABLE KEYS */;
-INSERT INTO `review` VALUES (245,'2019-10-06 18:38:48','tu pu',1,169),
-                            (266,'2019-10-06 19:00:33','tu pu',1,169),
-                            (282,'2019-10-06 19:03:17','tu pu',1,167);
+INSERT INTO `review` VALUES (1,'cc','2019-10-06 18:38:48','tu pu',1,1),
+                            (2,'cc','2019-10-06 19:00:33','tu pu',2,1),
+                            (3,'cc','2019-10-06 19:03:17','tu pu',1,2);
 /*!40000 ALTER TABLE `review` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +162,8 @@ CREATE TABLE `lesson_teacher` (
 
 LOCK TABLES `lesson_teacher` WRITE;
 /*!40000 ALTER TABLE `lesson_teacher` DISABLE KEYS */;
-INSERT INTO `lesson_teacher` VALUES (244,41);
+INSERT INTO `lesson_teacher` VALUES (1,1);
+INSERT INTO `lesson_teacher` VALUES (2,2);
 /*!40000 ALTER TABLE `lesson_teacher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +187,8 @@ CREATE TABLE `lesson_student` (
 
 LOCK TABLES `lesson_student` WRITE;
 /*!40000 ALTER TABLE `lesson_student` DISABLE KEYS */;
-INSERT INTO `lesson_student` VALUES (244,41);
+INSERT INTO `lesson_student` VALUES (1,1);
+INSERT INTO `lesson_student` VALUES (2,2);
 /*!40000 ALTER TABLE `lesson_student` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@JsonIgnoreProperties({ "reviews" }) //eviter les boucle infinie en formats JSON
+@JsonIgnoreProperties({ "reviews","lessons" }) //eviter les boucle infinie en formats JSON
 public class Teacher extends GenericEntity implements Comparable<Teacher> {
 
     private String mail;
@@ -18,10 +18,10 @@ public class Teacher extends GenericEntity implements Comparable<Teacher> {
 
     private String enable; //TODO Alaways 1
 
-    @ManyToMany(mappedBy = "teachers")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "teachers")
     private List<Lesson> lessons;
 
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "teacher")
     private Set<Review> reviews;
 
     public Teacher() {

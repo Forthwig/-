@@ -30,15 +30,15 @@
                             </header>
                             <ul class="project">
 
-                                #foreach ($review in $reviews)
+                                #foreach ($review in $student.reviews)
 
                                     <li class="project__item">
                                         <a href="#" class="project__link focus--box-shadow">
                                             <div class="project__wrapper">
                                                 <div class="project__element project__inform">
-                                            <span class="project__inform-name"
-                                            > $review.title </span
-                                            >
+                                            <span class="project__inform-name">
+                                                $review.title
+                                            </span>
                                                 </div>
                                                 <div class="project__element project__date">
                                                     <p>$review.dateOfReview</p>

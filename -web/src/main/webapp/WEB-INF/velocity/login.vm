@@ -24,7 +24,7 @@
             <header>
                 <div class="containere" id="containere">
                     <div class="form-container sign-up-container">
-                        <form action="student/add" method="POST">
+                        <form action="#" method="POST">
                             <h1>Crée ton compte </h1>
                             <div class="social-container">
                                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -35,13 +35,13 @@
                             <input type="text" placeholder="Name" />
                             <input type="email" placeholder="Email" />
                             <input type="password" placeholder="Password" />
-                            <h5>$errorMessage</h5>
                             <button>C'est parti !</button>
                         </form>
                     </div>
                     <div class="form-container sign-in-container">
                         <form action="" method="POST">
                             <h1>Créer mon compte</h1>
+                            <h5>$errorMessage</h5>
                             <div class="social-container">
                                 <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
@@ -55,8 +55,6 @@
                             <button>Se connecter</button>
                         </form>
                     </div>
-
-
                     <div class="overlay-container">
                         <div class="overlay">
                             <div class="overlay-panel overlay-left">
@@ -104,7 +102,7 @@
                 #end
             </li>
             <li>
-                <a href="rank" style="--i: 0.2s;" class="myLink">Classement</a>
+                <a href="#" style="--i: 0.2s;" class="myLink">Classement</a>
             </li>
             <li>
                 #if($role == "[ROLE_STUDENT]")
@@ -122,7 +120,9 @@
         </ul>
     </div>
 </div>
+
 <script src="resources/js/script.js"></script>
 <script src="resources/js/log.js"></script>
+<script src="resources/js/jquery.js"></script>
 </body>
 </html>

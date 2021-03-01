@@ -261,12 +261,10 @@ ul {
 }
 
 .shadow.one {
-    z-index: -1;
     opacity: 0.15;
 }
 
 .shadow.two {
-    z-index: -2;
     opacity: 0.1;
 }
 

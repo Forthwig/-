@@ -12,8 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
-    margin: -20px 0 50px;
+    height: 100%;
 }
 h1 {
     font-weight: bold;
@@ -93,6 +92,7 @@ input {
 }
 
 
+
 .containere {
     background-color: #fff;
     border-radius: 10px;
@@ -106,6 +106,15 @@ input {
     max-width: 100%;
     min-height: 480px;
 }
+
+.container {
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    transform-style: preserve-3d;
+    background-image: linear-gradient(135deg, #485461 0%, #28313b 74%);
+}
+
 .form-container {
     position: absolute;
     top: 0;
@@ -231,12 +240,6 @@ input {
     width: 40px;
 }
 
-.container {
-    min-height: 100vh;
-    width: 100%;
-    overflow-x: hidden;
-    transform-style: preserve-3d;
-}
 
 .navbar {
     position: fixed;
@@ -317,6 +320,7 @@ input {
     transform-origin: left;
     transform-style: preserve-3d;
     transition: 0.5s;
+    background: lightgrey;
 }
 
 header {
@@ -449,7 +453,7 @@ ul {
 .shadow {
     position: absolute;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     top: 0;
     left: 0;
     transform-style: preserve-3d;
@@ -459,12 +463,10 @@ ul {
 }
 
 .shadow.one {
-    z-index: -1;
     opacity: 0.15;
 }
 
 .shadow.two {
-    z-index: -2;
     opacity: 0.1;
 }
 

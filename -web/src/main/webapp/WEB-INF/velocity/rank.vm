@@ -5,7 +5,7 @@
     <title>Професор</title>
     <link href="resources/css/rankdisplay.css" rel="stylesheet">
     <link href="resources/css/ranking.css" rel="stylesheet">
-
+    <script src="resources/js/jquery.js"></script>
 </head>
 
 <body>
@@ -26,7 +26,10 @@
                     #foreach ($teacher in $teachers)
                         <div class="card">
                         <div class="card__header">
-                            <img src="../../resources/img/seth-doyle-uJ8LNVCBjFQ-unsplash.jpg" alt="">
+                            <img
+                                    src="resources/img/Capture.PNG"
+                                    alt="Profile photo"
+                            />
                         </div>
                         <main class="card__body">
                             <h3 class="card__title">
@@ -71,32 +74,33 @@
     <div class="links">
         <ul>
             <li>
-                <a href="#" style="--i: 0.05s;" class="myLink">Index</a>
+                <a href="/web/" style="--i: 0.05s;" class="myLink">Index</a>
             </li>
-            #if ($email)
             <li>
-                <a href="logout" style="--i: 0.3s;" class="myLink">Je me deco</a>
+                <a href="/web/rank" style="--i: 0.2s;" class="myLink">Classement</a>
             </li>
+        <li>
+            #if($role == "[ROLE_STUDENT]")
+                <li>
+                    <a href="/web/student" style="--i: 0.15s;" class="myLink">Mon Profil</a>
+                </li>
+                <li>
+                    <a href="/web/logout" style="--i: 0.15s;" class="myLink">Je me déco rapidos</a>
+                </li>
+            #elseif($role == "[ROLE_TEACHER]")
+                <li>
+                    <a href="/web/teacher" style="--i: 0.15s;" class="myLink">Mon Profil</a>
+                </li>
+                <li>
+                    <a href="/web/logout" style="--i: 0.15s;" class="myLink">Je me déco rapidos</a>
+                </li>
             #else
-            <li>
-                <a href="login" style="--i: 0.3s;" class="myLink">Je me co rapidos</a>
-            </li>
-
+                <a href="/web/login" style="--i: 0.3s;" class="myLink">Je me co rapidos</a>
             #end
-            <li>
-                <a href="profil" style="--i: 0.15s;" class="myLink">Ecrire</a>
             </li>
             <li>
-                <a href="#" style="--i: 0.2s;" class="myLink">Classement</a>
+                <a href="/#" style="--i: 0.3s;" class="myLink">Contact</a>
             </li>
-            <li>
-                <a href="profil" style="--i: 0.25s;" class="myLink">Mon profil</a>
-            </li>
-            <li>
-                <a href="#" style="--i: 0.3s;" class="myLink">Contact</a>
-            </li>
-
-
         </ul>
     </div>
 </div>

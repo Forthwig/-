@@ -22,7 +22,7 @@ public class ProfilController implements RestController {
     public ProfilController() {
     }
 
-    @RequestMapping(value = "student", method = RequestMethod.GET)
+    @RequestMapping(value = "/student", method = RequestMethod.GET)
     public String getStudentPage(@RequestParam(value = "error", required = false) String error, ModelMap modelMap){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         modelMap.addAttribute("student", StudentController.getInstance().getStudentByName(user.getUsername()));
@@ -35,7 +35,7 @@ public class ProfilController implements RestController {
         return "profil";
     }
 
-    @RequestMapping(value = "teacher", method = RequestMethod.GET)
+    @RequestMapping(value = "/teacher", method = RequestMethod.GET)
     public String getTeacherPage( ModelMap modelMap){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Teacher teacher = TeacherController.getInstance().getTeacherByMail(user.getUsername());
@@ -43,7 +43,7 @@ public class ProfilController implements RestController {
         return "profil";
     }
 
-    @RequestMapping(value = "student/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/student/update", method = RequestMethod.POST)
     public String setSurnomAndPromoPage(String surnom,String promo,String image,ModelMap modelMap){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Student student = StudentController.getInstance().getStudentByName(user.getUsername());
@@ -57,7 +57,7 @@ public class ProfilController implements RestController {
         return "redirect:../student";
     }
 
-    @RequestMapping(value = "student/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/student/add", method = RequestMethod.POST)
     public String addReview(String title,String emailteacher,String text,ModelMap modelMap){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Student student = StudentController.getInstance().getStudentByName(user.getUsername());

@@ -104,9 +104,15 @@
                             <hr>
                             <input name="surnom" type="text" placeholder="Surnom" />
                             <select name="promo" id="promo-selected" >
-                                <option value="">--Choisit ta promo--</option>
+                                #if ($student.promo)
+                                    <option value=$student.promo>$student.promo</option>
+                                #else
+                                    <option value="">--Choisit ta promo--</option>
+                                #end
                                 #foreach($promo in $promos)
-                                    <option value=$promo>$promo</option>
+                                    #if ($promo != $student.promo)
+                                        <option value=$promo>$promo</option>
+                                    #end
                                 #end
                             </select>
                             <p style="position: relative;left: 29%;margin-top: 12px;margin-bottom: 3px;">Une petite photo ? </p>

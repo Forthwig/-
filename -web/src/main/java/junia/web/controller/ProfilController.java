@@ -79,6 +79,7 @@ public class ProfilController implements RestController {
         else{
             modelMap.addAttribute("error", "true");
         }
+        modelMap.put("role", user.getAuthorities().toString());
         return "redirect:../student";
     }
 

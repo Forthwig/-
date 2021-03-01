@@ -4,6 +4,7 @@ import junia.lab.core.entity.Student;
 import junia.lab.core.entity.Teacher;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -38,7 +39,7 @@ public class LoginController implements RestController {
     }
 
     @RequestMapping(value = "/login/add", method = RequestMethod.POST)
-    public String addReview(String username,String password,ModelMap modelMap){
+    public String add(String username,String password,ModelMap modelMap){
         if(username.isEmpty()) {
             modelMap.addAttribute("error", "true");
             return "redirect:/";
@@ -56,6 +57,7 @@ public class LoginController implements RestController {
             student.setEnable(1);
             student.setRole("ROLE_STUDENT");
             StudentController.getInstance().save(student);
+            modelMap.put("role", "ROLE_STUDENT");
             return "redirect:../student";
         }
         else if(username.contains("@yncrea.fr")){
@@ -65,11 +67,12 @@ public class LoginController implements RestController {
             teacher.setEnable(1);
             teacher.setRole("ROLE_TEACHER");
             TeacherController.getInstance().save(teacher);
+            modelMap.put("role", "ROLE_TEACHER");
             return "redirect:../teacher";
         }
 
         modelMap.addAttribute("error", "true");
-        return "redirect:../student";
+        return "redirect:../";
     }
 
 }

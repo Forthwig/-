@@ -2,6 +2,8 @@ package junia.web.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,10 @@ public class RankController implements RestController {
     @RequestMapping(value = "/rank", method = RequestMethod.GET)
     public String getRankPage(ModelMap modelMap){
         modelMap.addAttribute("teachers",TeacherController.getInstance().getList());
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            modelMap.put("role", user.getAuthorities().toString());
+        }
         return "rank";
     }
 

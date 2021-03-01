@@ -46,16 +46,16 @@
 
                         <footer class="card__footer">
                             <p class="stat">
-                                <span class="stat__num">$rank</span>
-                                <span class="stat__label">Place</span>
-                            </p>
-                            <p class="stat">
                                 <span class="stat__num">$teacher.reviews.size()</span>
                                 <span class="stat__label">Commentaires</span>
                             </p>
                             <p class="stat">
-                                <span class="stat__num">$Jsp</span>
-                                <span class="stat__label">Likes</span>
+                                #foreach( $review in $teacher.reviews)
+                                    <span class="stat__label">
+                                        <h5> $review.title</h5>
+                                        $review.text
+                                    </span>
+                                #end
                             </p>
                         </footer>
                     </div>

@@ -53,6 +53,8 @@ public class LoginController implements RestController {
             Student student = new Student();
             student.setEmail(username);
             student.setPassword(password);
+            student.setEnable(1);
+            student.setRole("ROLE_STUDENT");
             StudentController.getInstance().save(student);
             return "redirect:../student";
         }
@@ -60,6 +62,8 @@ public class LoginController implements RestController {
             Teacher teacher = new Teacher();
             teacher.setEmail(username);
             teacher.setPassword(password);
+            teacher.setEnable(1);
+            teacher.setRole("ROLE_TEACHER");
             TeacherController.getInstance().save(teacher);
             return "redirect:../teacher";
         }

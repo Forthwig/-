@@ -23,7 +23,7 @@ body {
 .card {
     /*width: 100%;
     max-width: 325px;*/
-    margin: 15px auto;
+    margin: 30px auto;
     border-radius: 15px;
     background-color: white;
     box-shadow: 0 15px 30px hsla(229, 23%, 23%, 0.25);

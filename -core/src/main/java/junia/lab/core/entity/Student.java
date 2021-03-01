@@ -17,9 +17,9 @@ public class Student extends GenericEntity implements Comparable<Student> {
     @Enumerated(EnumType.STRING)
     private Promo promo;
 
-    private String role; //TODO Alaways Student
+    private String role;
 
-    private String enable; //TODO Alaways 1
+    private int enable;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
     private List<Review> reviews;
@@ -81,6 +81,14 @@ public class Student extends GenericEntity implements Comparable<Student> {
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setEnable(int enable) {
+        this.enable = enable;
     }
 
     @Override

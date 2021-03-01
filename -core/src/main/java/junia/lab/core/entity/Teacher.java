@@ -14,9 +14,9 @@ public class Teacher extends GenericEntity implements Comparable<Teacher> {
 
     private String password;
 
-    private String role; //TODO Alaways Teacher
+    private String role;
 
-    private String enable; //TODO Alaways 1
+    private int enable;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "teachers")
     private List<Lesson> lessons;
@@ -65,6 +65,14 @@ public class Teacher extends GenericEntity implements Comparable<Teacher> {
 
     public void setReviews(Set<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setEnable(int enable) {
+        this.enable = enable;
     }
 
     @Override

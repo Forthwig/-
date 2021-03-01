@@ -27,9 +27,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // For User in database.
         authManagerBuilder.jdbcAuthentication().dataSource(dataSource)
-                    .usersByUsernameQuery("SELECT mail,password,enable FROM student WHERE mail=?")
-                .authoritiesByUsernameQuery("SELECT mail,role FROM student WHERE mail=?");
-        //TODO mettre aussi les teacher
+                        .usersByUsernameQuery("SELECT mail,password,enable FROM student s WHERE s.mail=?")
+                        .authoritiesByUsernameQuery("SELECT mail,role FROM student s WHERE s.mail=?")
+                .and()
+                    .jdbcAuthentication().dataSource(dataSource)
+                        .usersByUsernameQuery("UNION SELECT mail,password,enable FROM teacher t WHERE t.mail=?")
+                        .authoritiesByUsernameQuery("UNION SELECT mail,role FROM teacher t WHERE t.mail=?");
     }
 
     @Bean
@@ -41,11 +44,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/", "/home", "/resources/**","/rank").permitAll()
-                .anyRequest().authenticated()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/student/**","/logout").hasAnyRole("STUDENT")
-                .antMatchers("/teacher/**","/logout").hasAnyRole("TEACHER")
+                .antMatchers("/student/**","/logout").hasRole("STUDENT")
+                .antMatchers("/teacher/**","/logout").hasRole("TEACHER")
+                .anyRequest().authenticated()
         .and()
             .formLogin()
             .loginPage("/login")

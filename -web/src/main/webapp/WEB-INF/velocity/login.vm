@@ -49,12 +49,12 @@
                             <div class="overlay-panel overlay-left">
                                 <h1>Re-coucou</h1>
                                 <p>Viens vite nous donner ton avis !</p>
-                                <button class="ghost" id="signIn">Sign In</button>
+                                <button class="ghost" id="signIn">Se connecter</button>
                             </div>
                             <div class="overlay-panel overlay-right">
                                 <h1>Coucou</h1>
                                 <p>Crée toi un compte sur notre plateforme et viens nous donner ton avis :)</p>
-                                <button class="ghost" id="signUp">Sign Up</button>
+                                <button class="ghost" id="signUp">Creer un compte</button>
                             </div>
                         </div>
                     </div>

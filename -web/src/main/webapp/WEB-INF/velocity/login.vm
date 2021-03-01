@@ -22,14 +22,20 @@
     <div class="main-container">
         <div class="main">
             <header>
-                <div class="containere" id="containere">
+                <div id="containere"
+                #if($sign)
+                     class="containere right-panel-active"
+                #else
+                    class="containere"
+                #end
+                >
                     <div class="form-container sign-up-container">
-                        <form action="#" method="POST">
+                        <form action="login/add" method="POST">
                             <h1>Crée ton compte </h1>
                             <span>Ou bien avec ton email</span>
-                            <input type="text" placeholder="Name" />
-                            <input type="email" placeholder="Email" />
-                            <input type="password" placeholder="Password" />
+                            <input type="text" placeholder="Name" name='name' />
+                            <input type="email" placeholder="Email" name='mail' />
+                            <input type="password" placeholder="Password" name='password' />
                             <button>C'est parti !</button>
                         </form>
                     </div>

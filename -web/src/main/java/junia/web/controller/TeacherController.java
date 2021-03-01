@@ -48,6 +48,9 @@ public class TeacherController implements RestController {
         return teacherService.getByEmail(mail);
     }
 
+    public void saveTeacher(Teacher teacher){
+        teacherService.save(teacher);
+    }
 
     /** API **/
 

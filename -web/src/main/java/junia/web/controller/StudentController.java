@@ -39,6 +39,14 @@ public class StudentController implements RestController {
         return studentService.getByEmail(mail);
     }
 
+    public Boolean contains(String mail){
+        return studentService.findAll().stream().anyMatch(student -> student.getEmail().contains(mail));
+    }
+
+    public void saveStudent(Student student){
+        studentService.save(student);
+    }
+
     /** API **/
 
     @POST

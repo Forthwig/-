@@ -39,40 +39,41 @@ public class LoginController implements RestController {
     }
 
     @RequestMapping(value = "/login/add", method = RequestMethod.POST)
-    public String add(String username,String password,ModelMap modelMap){
-        if(username.isEmpty()) {
-            modelMap.addAttribute("error", "true");
-            return "redirect:/";
+    public String add(String name,String mail,String password,ModelMap modelMap){
+        if(mail == null || password == null ) {
+            return "redirect:/login";
+        }
+        if(TeacherController.getInstance().contains(mail)){
+            return "redirect:/login";
         }
 
-        if(TeacherController.getInstance().contains(username)){
-            modelMap.addAttribute("error", "true");
-            return "redirect:/";
+        if(StudentController.getInstance().contains(mail)){
+            return "redirect:/login";
         }
 
-        if(username.contains("@isen.yncrea.fr")){
+        if(mail.contains("@isen.yncrea.fr")){
             Student student = new Student();
-            student.setEmail(username);
+            if(name != null)
+                student.setSurnom(name);
+            student.setEmail(mail);
             student.setPassword(password);
             student.setEnable(1);
             student.setRole("ROLE_STUDENT");
-            StudentController.getInstance().save(student);
+            StudentController.getInstance().saveStudent(student);
             modelMap.put("role", "ROLE_STUDENT");
-            return "redirect:../student";
+            return "redirect:/";
         }
-        else if(username.contains("@yncrea.fr")){
+        else if(mail.contains("@yncrea.fr")){
             Teacher teacher = new Teacher();
-            teacher.setEmail(username);
+            teacher.setEmail(mail);
             teacher.setPassword(password);
             teacher.setEnable(1);
             teacher.setRole("ROLE_TEACHER");
-            TeacherController.getInstance().save(teacher);
+            TeacherController.getInstance().saveTeacher(teacher);
             modelMap.put("role", "ROLE_TEACHER");
-            return "redirect:../teacher";
+            return "redirect:/";
         }
-
-        modelMap.addAttribute("error", "true");
-        return "redirect:../";
+        return "redirect:/login";
     }
 
 }

@@ -34,7 +34,7 @@
                             </h3>
                             <p class="card__text">
                                 #foreach($lesson in $teacher.lessons)
-                                    $lesson.title
+                                    $lesson.title <br>
                                 #end
                             </p>
                         </main>

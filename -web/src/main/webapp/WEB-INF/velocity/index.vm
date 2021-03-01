@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Професор</title>
     <link href="resources/css/style.css" rel="stylesheet">
+    <script src="resources/js/jquery.js"></script>
 </head>
 
 <body>
@@ -51,31 +52,32 @@
     <div class="links">
         <ul>
             <li>
-                <a href="#" style="--i: 0.05s;" class="myLink">Index</a>
+                <a href="/web/" style="--i: 0.05s;" class="myLink">Index</a>
+            </li>
+            <li>
+                <a href="/web/rank" style="--i: 0.2s;" class="myLink">Classement</a>
             </li>
             <li>
                 #if($role == "[ROLE_STUDENT]")
-                    <a href="student" style="--i: 0.15s;" class="myLink">Ecrire</a>
+                    <li>
+                        <a href="/web/student" style="--i: 0.15s;" class="myLink">Mon Profil</a>
+                    </li>
+                    <li>
+                        <a href="/web/logout" style="--i: 0.15s;" class="myLink">Je me déco rapidos</a>
+                    </li>
                 #elseif($role == "[ROLE_TEACHER]")
-                    <a href="teacher" style="--i: 0.15s;" class="myLink">Ecrire</a>
+                    <li>
+                        <a href="/web/teacher" style="--i: 0.15s;" class="myLink">Mon Profil</a>
+                    </li>
+                    <li>
+                        <a href="/web/logout" style="--i: 0.15s;" class="myLink">Je me déco rapidos</a>
+                    </li>
                 #else
-                    <a href="logout" style="--i: 0.3s;" class="myLink">Je me deco</a>
+                    <a href="/web/login" style="--i: 0.3s;" class="myLink">Je me co rapidos</a>
                 #end
             </li>
             <li>
-                <a href="rank" style="--i: 0.2s;" class="myLink">Classement</a>
-            </li>
-            <li>
-                #if($role == "[ROLE_STUDENT]")
-                    <a href="student" style="--i: 0.15s;" class="myLink">Mon Profil</a>
-                #elseif($role == "[ROLE_TEACHER]")
-                    <a href="teacher" style="--i: 0.15s;" class="myLink">Mon Profil</a>
-                #else
-                    <a href="login" style="--i: 0.3s;" class="myLink">Mon Profil</a>
-                #end
-            </li>
-            <li>
-                <a href="#" style="--i: 0.3s;" class="myLink">Contact</a>
+                <a href="/#" style="--i: 0.3s;" class="myLink">Contact</a>
             </li>
         </ul>
     </div>

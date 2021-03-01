@@ -169,7 +169,7 @@ input {
     z-index: 100;
 }
 
-.container.right-panel-active .overlay-container{
+.containere.right-panel-active .overlay-container{
     transform: translateX(-100%);
 }
 

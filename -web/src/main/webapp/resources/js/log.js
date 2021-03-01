@@ -1,9 +1,10 @@
-const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const containere = document.getElementById('containere');
-const container = document.getElementById('container');
-var menuCSSChange = document.getElementById('changecss');
-
+console.log("cc c'est moi moumou la reine des mouettes")
+signUpButton = document.getElementById('signUp');
+console.log("cc c'est moi moumou la reine des mouettesx2")
+signInButton = document.getElementById('signIn');
+containere = document.getElementById('containere');
+container = document.getElementById('container');
+menuCSSChange = document.getElementById('changecss');
 
 signUpButton.addEventListener('click', () => {
     console.log("add")

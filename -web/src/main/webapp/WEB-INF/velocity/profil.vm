@@ -120,7 +120,7 @@
                             <ul class="statistics">
                                 <li class="statistics__entry">
                                     <a class="statistics__entry-description" href="#">Mes commentaires</a
-                                    ><span class="statistics__entry-quantity">$reviews.size()</span>
+                                    ><span class="statistics__entry-quantity">$student.reviews.size()</span>
                                 </li>
                             </ul>
 
